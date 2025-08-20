@@ -1,195 +1,302 @@
-<audio id="backgroundAudio" loop volume="0.5">
-  <source src="sound.mp3" type="audio/mpeg">
-</audio>
-
-<style>
-.sound-btn {
-    position: fixed;
-    top: 20px;
-    right: 16px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background: #333;
-    color: white;
-    cursor: pointer;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    will-change: transform;
-}
-
-.sound-btn:hover {
-    transform: scale(1.1);
-    background: #555;
-}
-
-.sound-btn.state-muted {
-    background: #ff4444;
-}
-
-.sound-btn.state-low {
-    background: #ffa500;
-}
-
-.sound-btn.state-normal {
-    background: #333;
-}
-
-.volume-container {
-    position: fixed;
-    top: 80px;
-    right: 29px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 15px 8px;
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    will-change: transform;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    overflow-x: hidden;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-.volume-slider {
-    width: 5px;
-    height: 100px;
-    -webkit-appearance: slider-vertical;
-    writing-mode: bt-lr;
-    direction: ltr;
-    background: #ddd;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #333;
-    cursor: pointer;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.volume-slider::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #333;
-    cursor: pointer;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.volume-slider::-webkit-slider-track {
-    width: 5px;
-    background: #eee;
-    border-radius: 5px;
-}
-
-.volume-slider::-moz-range-track {
-    width: 5px;
-    background: #eee;
-    border-radius: 5px;
-}
-</style>
-
-<button class="sound-btn state-muted" id="soundToggle">🔇</button>
-
-<div class="volume-container">
-    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" id="volumeControl" orient="vertical">
-</div>
-
-<script>
-var audio = document.getElementById("backgroundAudio");
-var soundToggle = document.getElementById("soundToggle");
-var volumeControl = document.getElementById("volumeControl");
-
-// Устанавливаем начальное состояние - звук выключен
-audio.volume = 0.5;
-audio.pause();
-
-// Три состояния: 0 - выкл, 1 - тихо, 2 - нормально
-var soundState = 0;
-
-// Функция циклического переключения звука
-function cycleSound() {
-    soundState = (soundState + 1) % 2; // Цикл 0→1→2→0→1→2...
-    
-    switch(soundState) {
-        case 0: // Выключено
-            audio.pause();
-            soundToggle.textContent = '🔇';
-            soundToggle.className = 'sound-btn state-muted';
-            volumeControl.value = 0;
-            audio.volume = 0;
-            break;
-            
-            
-        case 1: // Нормальная громкость (50%)
-            audio.volume = 0.5;
-            volumeControl.value = 0.5;
-            soundToggle.textContent = '🔊';
-            soundToggle.className = 'sound-btn state-normal';
-            if (audio.paused) {
-                audio.play().catch(error => {
-                    console.log("Ошибка воспроизведения:", error);
-                });
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудио контролы</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #c9c9c9;
+            font-family: 'Cinzel', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .audio-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .sound-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: #1a0000;
+            color: #8b0000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.4), 
+                        inset 0 0 10px rgba(0, 0, 0, 0.8);
+            transition: all 0.3s ease;
+            font-family: 'Cinzel', serif;
+            border: 1px solid #3a1a1a;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .sound-btn:hover {
+            transform: scale(1.1);
+            background: #2a0000;
+            color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.6),
+                        inset 0 0 15px rgba(139, 0, 0, 0.3);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .sound-btn.state-muted {
+            background: #1a0000;
+            color: #8b0000;
+            box-shadow: 0 0 10px rgba(139, 0, 0, 0.3),
+                        inset 0 0 8px rgba(0, 0, 0, 0.9);
+        }
+        
+        .sound-btn.state-normal {
+            background: #1a0000;
+            color: #ff6b6b;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.4),
+                        inset 0 0 10px rgba(139, 0, 0, 0.4);
+            animation: pulse 3s infinite;
+        }
+        
+        .volume-container {
+            position: absolute;
+            top: 60px;
+            right: 13px;
+            background: rgba(10, 0, 0, 0.95);
+            padding: 15px 8px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3),
+                        inset 0 0 10px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid #3a1a1a;
+        }
+        
+        .sound-btn:hover ~ .volume-container,
+        .volume-container:hover {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .volume-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .volume-slider {
+            width: 6px;
+            height: 100px;
+            -webkit-appearance: slider-vertical;
+            writing-mode: bt-lr;
+            direction: ltr;
+            background: linear-gradient(to bottom, #8b0000, #600);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            border: 1px solid #3a1a1a;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #1a0000;
+            cursor: pointer;
+            border: 2px solid #8b0000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5),
+                        inset 0 0 5px rgba(0, 0, 0, 0.8);
+            transition: all 0.2s ease;
+        }
+        
+        .volume-slider::-webkit-slider-thumb:hover {
+            background: #2a0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.7),
+                        inset 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #1a0000;
+            cursor: pointer;
+            border: 2px solid #8b0000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.5),
+                        inset 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        .volume-slider::-webkit-slider-track {
+            width: 6px;
+            background: linear-gradient(to bottom, #2a0a0a, #1a0000);
+            border-radius: 3px;
+            border: 1px solid #3a1a1a;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(139, 0, 0, 0.4),
+                           inset 0 0 10px rgba(0, 0, 0, 0.8);
             }
-            break;
-    }
-}
-
-// Управление громкостью через ползунок
-volumeControl.addEventListener('input', function() {
-    audio.volume = this.value;
-    
-    // Обновляем состояние кнопки в зависимости от громкости
-    if (this.value == 0) {
-        soundState = 0;
-        soundToggle.textContent = '🔇';
-        soundToggle.className = 'sound-btn state-muted';
-        if (!audio.paused) {
-            audio.pause();
+            50% {
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.6),
+                           inset 0 0 15px rgba(139, 0, 0, 0.3);
+            }
         }
-    } else {
-        soundState = 1;
-        soundToggle.textContent = '🔊';
-        soundToggle.className = 'sound-btn state-normal';
-        if (audio.paused) {
-            audio.play().catch(error => {
-                console.log("Ошибка воспроизведения:", error);
-            });
+        
+        .volume-container::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background: linear-gradient(45deg, 
+                       transparent 0%, 
+                       rgba(139, 0, 0, 0.1) 50%, 
+                       transparent 100%);
+            pointer-events: none;
+            border-radius: 5px;
+            z-index: -1;
         }
-    }
-});
+    </style>
+</head>
+<body>
+    <div class="audio-controls">
+        <audio id="backgroundAudio" loop>
+            <source src="sound.mp3" type="audio/mpeg">
+        </audio>
+        
+        <button class="sound-btn state-muted" id="soundToggle">🔇</button>
+        
+        <div class="volume-container">
+            <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" id="volumeControl" orient="vertical">
+        </div>
+    </div>
 
-// Вешаем обработчик на кнопку для циклического переключения
-soundToggle.addEventListener('click', cycleSound);
-
-// Блокируем автозапуск - звук изначально выключен
-</script>
+    <script>
+        var audio = document.getElementById("backgroundAudio");
+        var soundToggle = document.getElementById("soundToggle");
+        var volumeControl = document.getElementById("volumeControl");
+        var volumeContainer = document.querySelector('.volume-container');
+        
+        // Устанавливаем начальное состояние - звук выключен
+        audio.volume = 0.5;
+        audio.pause();
+        
+        var soundState = 0;
+        var hideTimeout = null;
+        
+        // Функция показа ползунка
+        function showVolumeSlider() {
+            volumeContainer.classList.add('visible');
+            clearTimeout(hideTimeout);
+        }
+        
+        // Функция скрытия ползунка с задержкой
+        function hideVolumeSlider() {
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                if (!volumeContainer.matches(':hover') && !soundToggle.matches(':hover')) {
+                    volumeContainer.classList.remove('visible');
+                }
+            }, 1000);
+        }
+        
+        // Функция циклического переключения звука
+        function cycleSound() {
+            soundState = (soundState + 1) % 2;
+            
+            switch(soundState) {
+                case 0: // Выключено
+                    audio.pause();
+                    soundToggle.textContent = '🔇';
+                    soundToggle.className = 'sound-btn state-muted';
+                    volumeControl.value = 0;
+                    audio.volume = 0;
+                    break;
+                    
+                case 1: // Нормальная громкость (50%)
+                    audio.volume = 0.5;
+                    volumeControl.value = 0.5;
+                    soundToggle.textContent = '🔊';
+                    soundToggle.className = 'sound-btn state-normal';
+                    if (audio.paused) {
+                        audio.play().catch(error => {
+                            console.log("Ошибка воспроизведения:", error);
+                        });
+                    }
+                    break;
+            }
+        }
+        
+        // Управление громкостью через ползунок
+        volumeControl.addEventListener('input', function() {
+            audio.volume = this.value;
+            showVolumeSlider();
+            
+            if (this.value == 0) {
+                soundState = 0;
+                soundToggle.textContent = '🔇';
+                soundToggle.className = 'sound-btn state-muted';
+                if (!audio.paused) {
+                    audio.pause();
+                }
+            } else {
+                soundState = 1;
+                soundToggle.textContent = '🔊';
+                soundToggle.className = 'sound-btn state-normal';
+                if (audio.paused) {
+                    audio.play().catch(error => {
+                        console.log("Ошибка воспроизведения:", error);
+                    });
+                }
+            }
+        });
+        
+        // События для мыши
+        soundToggle.addEventListener('mouseenter', showVolumeSlider);
+        soundToggle.addEventListener('mouseleave', hideVolumeSlider);
+        
+        volumeContainer.addEventListener('mouseenter', showVolumeSlider);
+        volumeContainer.addEventListener('mouseleave', hideVolumeSlider);
+        
+        // События для касания/фокуса
+        volumeControl.addEventListener('focus', showVolumeSlider);
+        volumeControl.addEventListener('blur', hideVolumeSlider);
+        
+        // Вешаем обработчик на кнопку
+        soundToggle.addEventListener('click', cycleSound);
+    </script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
