@@ -224,7 +224,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
-            display: none; /* Скрыто по умолчанию */
+            display: none;
         }
 
         .system-monitor::before {
@@ -369,6 +369,12 @@
         .system-monitor .input-line {
             display: flex;
             align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .system-monitor .input-line.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .system-monitor .input-line input {
@@ -611,9 +617,7 @@
                     <div class="minecraft-block">
                         <h3>Описание</h3>
                         <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
-                        <div style="width: 100%; height: 200px; background-color: #8B7355; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                            Изображение Херобрина
-                        </div>
+                        <img src="herobrine.jpg" alt="Herobrine" class="minecraft-image" style="width: 64px; height: 49px;">
                     </div>
 
                     <div class="minecraft-block">
@@ -627,9 +631,7 @@
                     <div class="minecraft-block">
                         <h3>Особенности</h3>
                         <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
-                        <div style="width: 100%; height: 200px; background-color: #2F2F2F; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                            Изображение Нула
-                        </div>
+                        <img src="null.jpg" alt="Null" class="minecraft-image" style="width: 64px; height: 64px;">
                     </div>
 
                     <h2>Entity 303</h2>
@@ -659,6 +661,7 @@
                                 <td>Иммунитет к лаве и огню, может телепортироваться</td>
                             </tr>
                         </table>
+                        <img src="entity303.jpg" alt="Entity 303" class="minecraft-image" style="width: 64px; height: 43px;">
                     </div>
 
                     <div class="arg-button-container">
@@ -732,7 +735,7 @@
                         <div class="terminal-line">> Инициализация терминала...</div>
                         <div class="terminal-line">> Загрузка параметров доступа...</div>
                         <div class="terminal-line">> Готов к вводу команд.</div>
-                        <div class="terminal-line"><span class="prompt">user@system:~$</span> <span class="input-line"><input type="text" id="commandInput" placeholder="введите команду..."></span></div>
+                        <div class="terminal-line" id="inputLine"><span class="prompt">user@system:~$</span> <span class="input-line"><input type="text" id="commandInput" placeholder="введите команду..."></span></div>
                     </div>
                     <p class="typewriter" id="helpText">Доступные команды: status, logs, scan, help</p>
                 </div>
@@ -943,14 +946,14 @@
             argButton.addEventListener('click', function() {
                 wikiPage.classList.remove('fade-in');
                 wikiPage.classList.add('fade-out');
-                SoundGenerator.generateError(); // Звук при переходе
+                SoundGenerator.generateError();
 
                 setTimeout(() => {
                     wikiPage.style.display = 'none';
                     systemMonitor.style.display = 'block';
                     systemMonitor.classList.remove('fade-out');
                     systemMonitor.classList.add('fade-in');
-                }, 500); // Время анимации затемнения
+                }, 500);
             });
 
             // Инициализация аудио контекста
@@ -993,7 +996,7 @@
                 }
             });
 
-            // Логика для System Monitor (оставшаяся часть скрипта)
+            // Логика для System Monitor
             const statusElement = document.getElementById('status');
             const processCountElement = document.getElementById('processCount');
             const memoryUsageElement = document.getElementById('memoryUsage');
@@ -1001,6 +1004,7 @@
             const notifications = document.getElementById('notifications');
             const terminal = document.getElementById('terminal');
             const commandInput = document.getElementById('commandInput');
+            const inputLine = document.getElementById('inputLine');
             const helpText = document.getElementById('helpText');
             const secretPanel = document.getElementById('secretPanel');
             const quarantineBtn = document.getElementById('quarantineBtn');
@@ -1024,9 +1028,9 @@
                     const command = this.value.trim().toLowerCase();
                     this.value = '';
                     SoundGenerator.generateTyping();
+                    inputLine.classList.add('hidden'); // Скрываем поле ввода
                     addTerminalLine(`<span class="prompt">user@system:~$</span> ${command}`);
                     processCommand(command);
-                    addInputLine();
                     terminal.scrollTop = terminal.scrollHeight;
                 }
             });
@@ -1035,7 +1039,7 @@
                 switch(command) {
                     case 'status':
                         typeTerminalText('> Статус системы: НОРМАЛЬНЫЙ', 30, () => {
-                            typeTerminalText('> Все процессы работают в штатном режиме', 30);
+                            typeTerminalText('> Все процессы работают в штатном режиме', 30, addInputLineAnimated);
                         });
                         break;
                     case 'logs':
@@ -1046,7 +1050,10 @@
                                         if (scanCount >= 2) {
                                             typeTerminalText('> Лог 004: <span class="corrupted">ОБНАРУЖЕНА СУЩНОСТЬ err^d1 В ПОДСИСТЕМЕ ПАМЯТИ</span>', 40, () => {
                                                 SoundGenerator.generateWarning();
+                                                addInputLineAnimated();
                                             });
+                                        } else {
+                                            addInputLineAnimated();
                                         }
                                     });
                                 });
@@ -1055,34 +1062,36 @@
                         break;
                     case 'scan':
                         scanCount++;
-                        typeTerminalText('> Запуск глубокого сканирования...', 30);
-                        SoundGenerator.generateScan();
-                        if (scanCount === 1) {
-                            setTimeout(() => {
-                                typeTerminalText('> Сканирование завершено. Незначительные аномалии обнаружены.', 30, () => {
-                                    typeTerminalText('> Рекомендуется повторное сканирование для уточнения данных.', 30);
-                                });
-                            }, 1500);
-                        } else if (scanCount === 2) {
-                            setTimeout(() => {
-                                typeTerminalText('> <span class="warning">ПРЕДУПРЕЖДЕНИЕ: Обнаружены значительные искажения данных</span>', 40, () => {
-                                    typeTerminalText('> Источник: Неопознанная сущность в ядре системы', 30, () => {
-                                        anomalyDetected = true;
-                                        SoundGenerator.generateError();
-                                        revealAnomaly();
+                        typeTerminalText('> Запуск глубокого сканирования...', 30, () => {
+                            SoundGenerator.generateScan();
+                            if (scanCount === 1) {
+                                setTimeout(() => {
+                                    typeTerminalText('> Сканирование завершено. Незначительные аномалии обнаружены.', 30, () => {
+                                        typeTerminalText('> Рекомендуется повторное сканирование для уточнения данных.', 30, addInputLineAnimated);
                                     });
-                                });
-                            }, 2000);
-                        } else {
-                            typeTerminalText('> Сканирование уже выполняется...', 30);
-                        }
+                                }, 1500);
+                            } else if (scanCount === 2) {
+                                setTimeout(() => {
+                                    typeTerminalText('> <span class="warning">ПРЕДУПРЕЖДЕНИЕ: Обнаружены значительные искажения данных</span>', 40, () => {
+                                        typeTerminalText('> Источник: Неопознанная сущность в ядре системы', 30, () => {
+                                            anomalyDetected = true;
+                                            SoundGenerator.generateError();
+                                            revealAnomaly();
+                                            addInputLineAnimated();
+                                        });
+                                    });
+                                }, 2000);
+                            } else {
+                                typeTerminalText('> Сканирование уже выполняется...', 30, addInputLineAnimated);
+                            }
+                        });
                         break;
                     case 'help':
                         typeTerminalText('> Доступные команды:', 30, () => {
                             typeTerminalText('> status - показать статус системы', 30, () => {
                                 typeTerminalText('> logs - показать системные логи', 30, () => {
                                     typeTerminalText('> scan - запустить глубокое сканирование', 30, () => {
-                                        typeTerminalText('> help - показать эту справку', 30);
+                                        typeTerminalText('> help - показать эту справку', 30, addInputLineAnimated);
                                     });
                                 });
                             });
@@ -1093,12 +1102,13 @@
                             typeTerminalText('> <span class="corrupted">ПРЕКРАТИТЕ ВЗАИМОДЕЙСТВИЕ</span>', 40, () => {
                                 SoundGenerator.generateEntity();
                                 showErrorModal();
+                                addInputLineAnimated();
                             });
                         });
                         break;
                     default:
                         if (command) {
-                            typeTerminalText(`> Неизвестная команда: "${command}"`, 30);
+                            typeTerminalText(`> Неизвестная команда: "${command}"`, 30, addInputLineAnimated);
                             SoundGenerator.generateError();
                         }
                 }
@@ -1133,29 +1143,25 @@
                 typeCharacter();
             }
 
-            function addInputLine() {
-                const inputLine = document.createElement('div');
-                inputLine.className = 'input-line';
-                inputLine.innerHTML = `<span class="prompt">user@system:~$</span> <input type="text" placeholder="введите команду...">`;
-                const newInput = inputLine.querySelector('input');
-                newInput.addEventListener('input', function() {
-                    if (soundEnabled && this.value.length > 0) {
-                        SoundGenerator.generateTyping();
+            function addInputLineAnimated() {
+                inputLine.classList.remove('hidden');
+                const input = inputLine.querySelector('input');
+                input.value = '';
+                input.focus();
+                let prompt = 'user@system:~$';
+                let index = 0;
+                function typePrompt() {
+                    if (index <= prompt.length) {
+                        inputLine.querySelector('span.prompt').textContent = prompt.substring(0, index);
+                        index++;
+                        setTimeout(typePrompt, 100); // Скорость появления по букве
+                    } else {
+                        inputLine.querySelector('span.input-line').style.opacity = 1;
                     }
-                });
-                newInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        const command = this.value.trim().toLowerCase();
-                        this.disabled = true;
-                        SoundGenerator.generateTyping();
-                        addTerminalLine(`<span class="prompt">user@system:~$</span> ${command}`);
-                        processCommand(command);
-                        addInputLine();
-                        terminal.scrollTop = terminal.scrollHeight;
-                    }
-                });
-                terminal.appendChild(inputLine);
-                newInput.focus();
+                }
+                inputLine.querySelector('span.prompt').textContent = '';
+                inputLine.querySelector('span.input-line').style.opacity = 0;
+                typePrompt();
             }
 
             function updateSystemInfo() {
@@ -1218,6 +1224,7 @@
                             typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
                                 SoundGenerator.generateError();
                                 showErrorModal();
+                                addInputLineAnimated();
                             });
                         });
                     });
