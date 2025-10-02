@@ -5,32 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minecraft Wiki</title>
     <style>
-        /* Основные стили для вики */
+        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            transition: opacity 0.5s ease;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             flex: 1;
         }
-        
-        /* Шапка */
-        header {
+
+        /* Стили для Minecraft Wiki */
+        .wiki-page {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .wiki-page header {
             background-color: #6b8c42;
             color: white;
             padding: 20px 0;
@@ -38,46 +42,45 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        
-        .header-content {
+
+        .wiki-page .header-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        
-        .logo {
+
+        .wiki-page .logo {
             display: flex;
             align-items: center;
         }
-        
-        .logo img {
+
+        .wiki-page .logo img {
             height: 60px;
             margin-right: 15px;
         }
-        
-        h1 {
+
+        .wiki-page h1 {
             font-size: 2.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
-        /* Навигация */
-        nav {
+
+        .wiki-page nav {
             background-color: #5a7242;
             border-radius: 8px;
             margin-bottom: 20px;
         }
-        
-        nav ul {
+
+        .wiki-page nav ul {
             display: flex;
             list-style: none;
             padding: 15px;
         }
-        
-        nav li {
+
+        .wiki-page nav li {
             margin-right: 20px;
         }
-        
-        nav a {
+
+        .wiki-page nav a {
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -85,94 +88,91 @@
             border-radius: 4px;
             transition: background-color 0.3s;
         }
-        
-        nav a:hover {
+
+        .wiki-page nav a:hover {
             background-color: rgba(255,255,255,0.2);
         }
-        
-        /* Основной контент */
-        .wiki-content {
+
+        .wiki-page .wiki-content {
             display: flex;
             gap: 20px;
         }
-        
-        .main-content {
+
+        .wiki-page .main-content {
             flex: 3;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        .sidebar {
+
+        .wiki-page .sidebar {
             flex: 1;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        h2 {
+
+        .wiki-page h2 {
             color: #6b8c42;
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid #e0e0e0;
         }
-        
-        h3 {
+
+        .wiki-page h3 {
             color: #5a7242;
             margin: 15px 0 10px;
         }
-        
-        p {
+
+        .wiki-page p {
             margin-bottom: 15px;
         }
-        
-        .minecraft-block {
+
+        .wiki-page .minecraft-block {
             background-color: #f0f0f0;
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 15px;
             margin-bottom: 20px;
         }
-        
-        .minecraft-image {
+
+        .wiki-page .minecraft-image {
             width: 100%;
             border-radius: 4px;
             margin: 10px 0;
             border: 1px solid #ddd;
         }
-        
-        /* Таблица */
-        table {
+
+        .wiki-page table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
         }
-        
-        th, td {
+
+        .wiki-page th, .wiki-page td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
-        
-        th {
+
+        .wiki-page th {
             background-color: #6b8c42;
             color: white;
         }
-        
-        tr:nth-child(even) {
+
+        .wiki-page tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-        
-        /* Скрытая кнопка перехода в АРГ */
-        .arg-button-container {
+
+        .wiki-page .arg-button-container {
             text-align: left;
             margin-top: 20px;
             padding: 10px 0;
         }
-        
-        .arg-button {
+
+        .wiki-page .arg-button {
             display: inline-block;
             color: #aaa;
             font-size: 14px;
@@ -184,15 +184,14 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
-        
-        .arg-button:hover {
+
+        .wiki-page .arg-button:hover {
             color: #666;
             border-color: #999;
             background-color: #eee;
         }
-        
-        /* Футер */
-        footer {
+
+        .wiki-page footer {
             text-align: center;
             margin-top: 30px;
             padding: 20px;
@@ -200,146 +199,1058 @@
             color: white;
             border-radius: 8px;
         }
-        
-        /* Адаптивность */
+
         @media (max-width: 768px) {
-            .wiki-content {
+            .wiki-page .wiki-content {
                 flex-direction: column;
             }
-            
-            .header-content {
+
+            .wiki-page .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
-            nav ul {
+
+            .wiki-page nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
             }
         }
+
+        /* Стили для System Monitor */
+        .system-monitor {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #00ff00;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            display: none; /* Скрыто по умолчанию */
+        }
+
+        .system-monitor::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.1;
+            animation: static 0.1s infinite;
+        }
+
+        @keyframes static {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-2px); }
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            5% { opacity: 0.9; }
+            10% { opacity: 0.95; }
+            15% { opacity: 0.82; }
+            20% { opacity: 0.92; }
+            25% { opacity: 0.78; }
+            30% { opacity: 0.85; }
+            35% { opacity: 0.9; }
+            40% { opacity: 0.86; }
+            45% { opacity: 0.82; }
+            50% { opacity: 0.88; }
+            55% { opacity: 0.9; }
+            60% { opacity: 0.87; }
+            65% { opacity: 0.92; }
+            70% { opacity: 0.82; }
+            75% { opacity: 0.95; }
+            80% { opacity: 0.9; }
+            85% { opacity: 0.93; }
+            90% { opacity: 0.87; }
+            95% { opacity: 0.91; }
+            100% { opacity: 0.97; }
+        }
+
+        .system-monitor .container {
+            animation: flicker 5s infinite;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        .system-monitor header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .system-monitor h1 {
+            font-size: 2rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .system-monitor .status {
+            font-size: 0.9rem;
+            color: #8f8;
+            letter-spacing: 1px;
+        }
+
+        .system-monitor .online {
+            color: #0f0;
+        }
+
+        .system-monitor .warning {
+            color: #ff0;
+        }
+
+        .system-monitor .error {
+            color: #f00;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .system-monitor .content {
+            margin: 30px 0;
+        }
+
+        .system-monitor .panel {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #00ff00;
+            background-color: rgba(0, 20, 0, 0.2);
+            position: relative;
+        }
+
+        .system-monitor .panel h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #8f8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .system-monitor .panel p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .system-monitor .terminal {
+            background-color: #000;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 20px 0;
+            height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .system-monitor .terminal-line {
+            margin-bottom: 5px;
+        }
+
+        .system-monitor .prompt {
+            color: #0f0;
+        }
+
+        .system-monitor .input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .system-monitor .input-line input {
+            background: transparent;
+            border: none;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+            margin-left: 5px;
+        }
+
+        .system-monitor .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: transparent;
+            color: #0f0;
+            border: 1px solid #0f0;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .system-monitor .btn:hover {
+            background-color: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        .system-monitor .hidden {
+            display: none;
+        }
+
+        .system-monitor .corrupted {
+            color: #f00;
+            font-weight: bold;
+        }
+
+        .system-monitor .glitch-text {
+            position: relative;
+        }
+
+        .system-monitor .glitch-text::before,
+        .system-monitor .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .system-monitor .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #f00;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .system-monitor .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #00f;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(31px, 9999px, 15px, 0); }
+            /* ... остальные keyframes как в исходном коде ... */
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            /* ... остальные keyframes как в исходном коде ... */
+        }
+
+        .system-monitor footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #00ff00;
+            font-size: 0.8rem;
+            color: #8f8;
+        }
+
+        @media (max-width: 768px) {
+            .system-monitor .container {
+                padding: 10px;
+            }
+
+            .system-monitor h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .system-monitor .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00 }
+        }
+
+        .system-monitor .progress-container {
+            width: 100%;
+            background-color: #000;
+            border: 1px solid #00ff00;
+            margin: 10px 0;
+        }
+
+        .system-monitor .progress-bar {
+            height: 20px;
+            background-color: #00ff00;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .system-monitor .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .system-monitor .modal-content {
+            background-color: #000;
+            border: 2px solid #f00;
+            padding: 20px;
+            max-width: 500px;
+            width: 90%;
+            color: #f00;
+            text-align: center;
+        }
+
+        .system-monitor .modal h2 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .system-monitor .modal p {
+            margin-bottom: 15px;
+        }
+
+        .system-monitor .close-modal {
+            background-color: #000;
+            color: #f00;
+            border: 1px solid #f00;
+            padding: 5px 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .system-monitor .sound-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .system-monitor .sound-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .system-monitor .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1em;
+            background-color: #0f0;
+            margin-left: 2px;
+            animation: blink-caret 0.75s step-end infinite;
+            vertical-align: middle;
+        }
+
+        /* Анимация затемнения */
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="logo">
-                    <!-- Заглушка для логотипа Майнкрафта -->
-                    <div style="width: 60px; height: 60px; background-color: #7CFC00; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #6b8c42; border: 2px solid #5a7242;">MC</div>
-                    <h1>Minecraft Wiki</h1>
-                </div>
-                <div class="search-box">
-                    <input type="text" placeholder="Поиск по вики..." style="padding: 8px; border-radius: 4px; border: none; width: 250px;">
-                </div>
-            </div>
-        </header>
-        
-        <nav>
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Блоки</a></li>
-                <li><a href="#">Мобы</a></li>
-                <li><a href="#">Предметы</a></li>
-                <li><a href="#">Крафтинг</a></li>
-                <li><a href="#">Биомы</a></li>
-                <li><a href="#">Структуры</a></li>
-            </ul>
-        </nav>
-        
-        <div class="wiki-content">
-            <div class="main-content">
-                <h2>Херобрин</h2>
-                <p>Херобрин (Herobrine) — легендарный персонаж из интернет-фольклора, связанного с Minecraft. Считается, что это призрачная фигура, похожая на Стива, но с полностью белыми глазами без зрачков.</p>
-                
-                <div class="minecraft-block">
-                    <h3>Описание</h3>
-                    <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
-                    
-                    <!-- Заглушка для изображения Херобрина -->
-                    <div style="width: 100%; height: 200px; background-color: #8B7355; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                        Изображение Херобрина
+    <!-- Minecraft Wiki -->
+    <div class="wiki-page fade-in" id="wikiPage">
+        <div class="container">
+            <header>
+                <div class="header-content">
+                    <div class="logo">
+                        <div style="width: 60px; height: 60px; background-color: #7CFC00; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #6b8c42; border: 2px solid #5a7242;">MC</div>
+                        <h1>Minecraft Wiki</h1>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Поиск по вики..." style="padding: 8px; border-radius: 4px; border: none; width: 250px;">
                     </div>
                 </div>
-                
-                <div class="minecraft-block">
-                    <h3>История появления</h3>
-                    <p>Первые упоминания о Херобрине появились в 2010 году на форуме Minecraft. Пользователь рассказал историю о своем мертвом брате, который "вернулся" в игру. Позже Нотч, создатель Minecraft, официально заявил, что Херобрин никогда не существовал в игре.</p>
-                </div>
-                
-                <h2>Нул (Null)</h2>
-                <p>Нул — еще один мифический персонаж из Minecraft, часто ассоциируемый с Херобрином. В отличие от Херобрина, у Нула полностью черная кожа и белые глаза.</p>
-                
-                <div class="minecraft-block">
-                    <h3>Особенности</h3>
-                    <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
-                    
-                    <!-- Заглушка для изображения Нула -->
-                    <div style="width: 100%; height: 200px; background-color: #2F2F2F; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                        Изображение Нула
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Блоки</a></li>
+                    <li><a href="#">Мобы</a></li>
+                    <li><a href="#">Предметы</a></li>
+                    <li><a href="#">Крафтинг</a></li>
+                    <li><a href="#">Биомы</a></li>
+                    <li><a href="#">Структуры</a></li>
+                </ul>
+            </nav>
+
+            <div class="wiki-content">
+                <div class="main-content">
+                    <h2>Херобрин</h2>
+                    <p>Херобрин (Herobrine) — легендарный персонаж из интернет-фольклора, связанного с Minecraft. Считается, что это призрачная фигура, похожая на Стива, но с полностью белыми глазами без зрачков.</p>
+
+                    <div class="minecraft-block">
+                        <h3>Описание</h3>
+                        <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
+                        <div style="width: 100%; height: 200px; background-color: #8B7355; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
+                            Изображение Херобрина
+                        </div>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>История появления</h3>
+                        <p>Первые упоминания о Херобрине появились в 2010 году на форуме Minecraft. Пользователь рассказал историю о своем мертвом брате, который "вернулся" в игру. Позже Нотч, создатель Minecraft, официально заявил, что Херобрин никогда не существовал в игре.</p>
+                    </div>
+
+                    <h2>Нул (Null)</h2>
+                    <p>Нул — еще один мифический персонаж из Minecraft, часто ассоциируемый с Херобрином. В отличие от Херобрина, у Нула полностью черная кожа и белые глаза.</p>
+
+                    <div class="minecraft-block">
+                        <h3>Особенности</h3>
+                        <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
+                        <div style="width: 100%; height: 200px; background-color: #2F2F2F; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
+                            Изображение Нула
+                        </div>
+                    </div>
+
+                    <h2>Entity 303</h2>
+                    <p>Entity 303 — еще один персонаж из Minecraft-фольклора. Согласно легенде, это бывший сотрудник Mojang, который был уволен и создал мод для мести.</p>
+
+                    <div class="minecraft-block">
+                        <h3>Характеристики</h3>
+                        <table>
+                            <tr>
+                                <th>Параметр</th>
+                                <th>Значение</th>
+                            </tr>
+                            <tr>
+                                <td>Здоровье</td>
+                                <td>600 единиц</td>
+                            </tr>
+                            <tr>
+                                <td>Урон</td>
+                                <td>20 единиц</td>
+                            </tr>
+                            <tr>
+                                <td>Скорость</td>
+                                <td>Быстрее игрока</td>
+                            </tr>
+                            <tr>
+                                <td>Особенности</td>
+                                <td>Иммунитет к лаве и огню, может телепортироваться</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="arg-button-container">
+                        <button class="arg-button" id="argButton" title="Перейти в АРГ">?</button>
                     </div>
                 </div>
-                
-                <h2>Entity 303</h2>
-                <p>Entity 303 — еще один персонаж из Minecraft-фольклора. Согласно легенде, это бывший сотрудник Mojang, который был уволен и создал мод для мести.</p>
-                
-                <div class="minecraft-block">
-                    <h3>Характеристики</h3>
-                    <table>
-                        <tr>
-                            <th>Параметр</th>
-                            <th>Значение</th>
-                        </tr>
-                        <tr>
-                            <td>Здоровье</td>
-                            <td>600 единиц</td>
-                        </tr>
-                        <tr>
-                            <td>Урон</td>
-                            <td>20 единиц</td>
-                        </tr>
-                        <tr>
-                            <td>Скорость</td>
-                            <td>Быстрее игрока</td>
-                        </tr>
-                        <tr>
-                            <td>Особенности</td>
-                            <td>Иммунитет к лаве и огню, может телепортироваться</td>
-                        </tr>
-                    </table>
-                </div>
-                
-                <!-- Скрытая кнопка перехода в АРГ -->
-                <div class="arg-button-container">
-                    <a href="arg-horror.html" class="arg-button" title="Перейти в АРГ">?</a>
+
+                <div class="sidebar">
+                    <h2>Популярные статьи</h2>
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Крипер</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Эндермен</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Крафтинг</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Эндер-дракон</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Деревни</a></li>
+                    </ul>
+
+                    <h2>Новые мобы</h2>
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Аллэй</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Снуифер</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Ригер</a></li>
+                    </ul>
+
+                    <h2>Обновления</h2>
+                    <p>Последнее обновление: Caves & Cliffs Part II</p>
+                    <p>Следующее обновление: The Wild Update</p>
                 </div>
             </div>
-            
-            <div class="sidebar">
-                <h2>Популярные статьи</h2>
-                <ul style="list-style-type: none;">
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Крипер</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Эндермен</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Крафтинг</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Эндер-дракон</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Деревни</a></li>
-                </ul>
-                
-                <h2>Новые мобы</h2>
-                <ul style="list-style-type: none;">
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Аллэй</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Снуифер</a></li>
-                    <li style="margin-bottom: 10px;"><a href="#" style="color: #6b8c42; text-decoration: none;">Ригер</a></li>
-                </ul>
-                
-                <h2>Обновления</h2>
-                <p>Последнее обновление: Caves & Cliffs Part II</p>
-                <p>Следующее обновление: The Wild Update</p>
+
+            <footer>
+                <p>Minecraft Wiki © 2023. Все права защищены. Minecraft является товарным знаком Mojang AB.</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- System Monitor -->
+    <div class="system-monitor fade-out" id="systemMonitor">
+        <div class="container">
+            <header>
+                <h1>СИСТЕМНЫЙ МОНИТОР v3.4.2</h1>
+                <div class="status">
+                    Статус: <span id="status" class="online">СИСТЕМА СТАБИЛЬНА</span>
+                </div>
+            </header>
+
+            <main class="content">
+                <div class="panel">
+                    <h2>СИСТЕМНАЯ ИНФОРМАЦИЯ</h2>
+                    <p>Версия ОС: NeuroSys v2.1.7</p>
+                    <p>Последнее обновление: 23.10.2023 04:17:32</p>
+                    <p>Активные процессы: <span id="processCount">47</span></p>
+                    <p>Потребление памяти: <span id="memoryUsage">68%</span></p>
+                    <div class="progress-container">
+                        <div id="memoryBar" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>СИСТЕМНЫЕ УВЕДОМЛЕНИЯ</h2>
+                    <div id="notifications">
+                        <p>> Обнаружены незначительные аномалии в лог-файлах</p>
+                        <p>> Проверка целостности данных: 98.7%</p>
+                        <p>> Фоновые процессы работают в штатном режиме</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h2>ТЕРМИНАЛЬНЫЙ ДОСТУП</h2>
+                    <div class="terminal" id="terminal">
+                        <div class="terminal-line">> Инициализация терминала...</div>
+                        <div class="terminal-line">> Загрузка параметров доступа...</div>
+                        <div class="terminal-line">> Готов к вводу команд.</div>
+                        <div class="terminal-line"><span class="prompt">user@system:~$</span> <span class="input-line"><input type="text" id="commandInput" placeholder="введите команду..."></span></div>
+                    </div>
+                    <p class="typewriter" id="helpText">Доступные команды: status, logs, scan, help</p>
+                </div>
+
+                <div class="panel hidden" id="secretPanel">
+                    <h2 class="glitch-text" data-text="ОБНАРУЖЕНА АНОМАЛИЯ">ОБНАРУЖЕНА АНОМАЛИЯ</h2>
+                    <p class="corrupted">ПРЕДУПРЕЖДЕНИЕ: Обнаружена несанкционированная активность в подсистеме памяти</p>
+                    <p>Идентификатор сущности: <span class="corrupted">err^d1</span></p>
+                    <p>Уровень угрозы: <span class="error">НЕИЗВЕСТЕН</span></p>
+                    <p>Рекомендуемые действия: Изолировать зараженные сектора</p>
+                    <button class="btn" id="quarantineBtn">АКТИВИРОВАТЬ КАРАНТИН</button>
+                </div>
+            </main>
+
+            <footer>
+                <p>NeuroSys Monitoring &copy; 2023. Все системы работают в штатном режиме.</p>
+                <p id="footerNote">Версия 3.4.2 | Стабильная сборка</p>
+            </footer>
+        </div>
+
+        <div class="modal" id="errorModal">
+            <div class="modal-content">
+                <h2>СИСТЕМНАЯ ОШИБКА</h2>
+                <p>Обнаружена критическая аномалия в ядре системы.</p>
+                <p>Идентификатор: <span class="corrupted">err^d1</span></p>
+                <p>Сущность проникла в системные процессы. Рекомендуется немедленное отключение.</p>
+                <button class="close-modal" id="closeModal">ПОНЯТНО</button>
             </div>
         </div>
-        
-        <footer>
-            <p>Minecraft Wiki © 2023. Все права защищены. Minecraft является товарным знаком Mojang AB.</p>
-        </footer>
+
+        <div class="sound-control">
+            <button class="sound-btn" id="soundToggle">🔊 ВЫКЛ ЗВУК</button>
+        </div>
     </div>
+
+    <script>
+        // Аудио контекст для генерации звуков
+        let audioContext;
+        let soundEnabled = true;
+        let ambientInterval;
+
+        const SoundGenerator = {
+            generateStatic(duration = 0.5) {
+                if (!audioContext || !soundEnabled) return;
+                const bufferSize = audioContext.sampleRate * duration;
+                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                const output = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+                const source = audioContext.createBufferSource();
+                const gainNode = audioContext.createGain();
+                gainNode.gain.value = 0.1;
+                source.buffer = buffer;
+                source.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                source.start();
+                return source;
+            },
+
+            generateTyping() {
+                if (!audioContext || !soundEnabled) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(400 + Math.random() * 100, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(250, audioContext.currentTime + 0.08);
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(800, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.08);
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.08);
+            },
+
+            generateSystemTyping() {
+                if (!audioContext || !soundEnabled) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(800 + Math.random() * 100, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(600, audioContext.currentTime + 0.06);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.06);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.06);
+            },
+
+            generateError() {
+                if (!audioContext || !soundEnabled) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.4);
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.4);
+            },
+
+            generateScan() {
+                if (!audioContext || !soundEnabled) return;
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        oscillator.type = 'sine';
+                        oscillator.frequency.setValueAtTime(800 + i * 150, audioContext.currentTime);
+                        gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        oscillator.start();
+                        oscillator.stop(audioContext.currentTime + 0.3);
+                    }, i * 250);
+                }
+            },
+
+            generateWarning() {
+                if (!audioContext || !soundEnabled) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(500, audioContext.currentTime);
+                oscillator.frequency.setValueAtTime(700, audioContext.currentTime + 0.1);
+                oscillator.frequency.setValueAtTime(500, audioContext.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime + 0.1);
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime + 0.2);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.5);
+            },
+
+            generateEntity() {
+                if (!audioContext || !soundEnabled) return;
+                for (let i = 0; i < 4; i++) {
+                    setTimeout(() => {
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        const filter = audioContext.createBiquadFilter();
+                        oscillator.type = ['sawtooth', 'square', 'triangle'][i % 3];
+                        oscillator.frequency.setValueAtTime(120 + i * 30, audioContext.currentTime);
+                        oscillator.frequency.exponentialRampToValueAtTime(60, audioContext.currentTime + 1.5);
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(800, audioContext.currentTime);
+                        filter.frequency.exponentialRampToValueAtTime(300, audioContext.currentTime + 1.5);
+                        gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
+                        oscillator.connect(filter);
+                        filter.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        oscillator.start();
+                        oscillator.stop(audioContext.currentTime + 1.5);
+                    }, i * 200);
+                }
+            },
+
+            startAmbient() {
+                if (!audioContext || !soundEnabled) return;
+                this.ambientOscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+                this.ambientOscillator.type = 'sawtooth';
+                this.ambientOscillator.frequency.setValueAtTime(55, audioContext.currentTime);
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(180, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+                this.ambientOscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                this.ambientOscillator.start();
+                setInterval(() => {
+                    if (this.ambientOscillator && soundEnabled) {
+                        this.ambientOscillator.frequency.setValueAtTime(
+                            55 + Math.random() * 15,
+                            audioContext.currentTime
+                        );
+                    }
+                }, 4000);
+            },
+
+            stopAmbient() {
+                if (this.ambientOscillator) {
+                    this.ambientOscillator.stop();
+                    this.ambientOscillator = null;
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const wikiPage = document.getElementById('wikiPage');
+            const systemMonitor = document.getElementById('systemMonitor');
+            const argButton = document.getElementById('argButton');
+
+            // Переключение страниц с эффектом затемнения
+            argButton.addEventListener('click', function() {
+                wikiPage.classList.remove('fade-in');
+                wikiPage.classList.add('fade-out');
+                SoundGenerator.generateError(); // Звук при переходе
+
+                setTimeout(() => {
+                    wikiPage.style.display = 'none';
+                    systemMonitor.style.display = 'block';
+                    systemMonitor.classList.remove('fade-out');
+                    systemMonitor.classList.add('fade-in');
+                }, 500); // Время анимации затемнения
+            });
+
+            // Инициализация аудио контекста
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                setTimeout(() => {
+                    SoundGenerator.startAmbient();
+                    ambientInterval = setInterval(() => {
+                        if (Math.random() > 0.8) {
+                            SoundGenerator.generateStatic(0.3);
+                        }
+                    }, 8000);
+                }, 1000);
+            } catch (e) {
+                console.log('Web Audio API не поддерживается');
+            }
+
+            // Обработчик переключения звука
+            const soundToggle = document.getElementById('soundToggle');
+            soundToggle.addEventListener('click', function() {
+                if (audioContext && audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                soundEnabled = !soundEnabled;
+                this.textContent = soundEnabled ? "🔊 ВЫКЛ ЗВУК" : "🔊 ВКЛ ЗВУК";
+                if (soundEnabled) {
+                    SoundGenerator.startAmbient();
+                    if (ambientInterval) clearInterval(ambientInterval);
+                    ambientInterval = setInterval(() => {
+                        if (Math.random() > 0.8) {
+                            SoundGenerator.generateStatic(0.3);
+                        }
+                    }, 8000);
+                } else {
+                    SoundGenerator.stopAmbient();
+                    if (ambientInterval) {
+                        clearInterval(ambientInterval);
+                        ambientInterval = null;
+                    }
+                }
+            });
+
+            // Логика для System Monitor (оставшаяся часть скрипта)
+            const statusElement = document.getElementById('status');
+            const processCountElement = document.getElementById('processCount');
+            const memoryUsageElement = document.getElementById('memoryUsage');
+            const memoryBar = document.getElementById('memoryBar');
+            const notifications = document.getElementById('notifications');
+            const terminal = document.getElementById('terminal');
+            const commandInput = document.getElementById('commandInput');
+            const helpText = document.getElementById('helpText');
+            const secretPanel = document.getElementById('secretPanel');
+            const quarantineBtn = document.getElementById('quarantineBtn');
+            const footerNote = document.getElementById('footerNote');
+            const errorModal = document.getElementById('errorModal');
+            const closeModal = document.getElementById('closeModal');
+
+            let anomalyDetected = false;
+            let scanCount = 0;
+            let memoryUsage = 68;
+            let processCount = 47;
+
+            commandInput.addEventListener('input', function() {
+                if (soundEnabled && this.value.length > 0) {
+                    SoundGenerator.generateTyping();
+                }
+            });
+
+            commandInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const command = this.value.trim().toLowerCase();
+                    this.value = '';
+                    SoundGenerator.generateTyping();
+                    addTerminalLine(`<span class="prompt">user@system:~$</span> ${command}`);
+                    processCommand(command);
+                    addInputLine();
+                    terminal.scrollTop = terminal.scrollHeight;
+                }
+            });
+
+            function processCommand(command) {
+                switch(command) {
+                    case 'status':
+                        typeTerminalText('> Статус системы: НОРМАЛЬНЫЙ', 30, () => {
+                            typeTerminalText('> Все процессы работают в штатном режиме', 30);
+                        });
+                        break;
+                    case 'logs':
+                        typeTerminalText('> Загрузка системных логов...', 30, () => {
+                            typeTerminalText('> Лог 001: Обнаружены незначительные искажения в секторе 7B', 30, () => {
+                                typeTerminalText('> Лог 002: Аномальное потребление памяти процессом ID-3842', 30, () => {
+                                    typeTerminalText('> Лог 003: Неопознанный сигнал в коммуникационном модуле', 30, () => {
+                                        if (scanCount >= 2) {
+                                            typeTerminalText('> Лог 004: <span class="corrupted">ОБНАРУЖЕНА СУЩНОСТЬ err^d1 В ПОДСИСТЕМЕ ПАМЯТИ</span>', 40, () => {
+                                                SoundGenerator.generateWarning();
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+                        });
+                        break;
+                    case 'scan':
+                        scanCount++;
+                        typeTerminalText('> Запуск глубокого сканирования...', 30);
+                        SoundGenerator.generateScan();
+                        if (scanCount === 1) {
+                            setTimeout(() => {
+                                typeTerminalText('> Сканирование завершено. Незначительные аномалии обнаружены.', 30, () => {
+                                    typeTerminalText('> Рекомендуется повторное сканирование для уточнения данных.', 30);
+                                });
+                            }, 1500);
+                        } else if (scanCount === 2) {
+                            setTimeout(() => {
+                                typeTerminalText('> <span class="warning">ПРЕДУПРЕЖДЕНИЕ: Обнаружены значительные искажения данных</span>', 40, () => {
+                                    typeTerminalText('> Источник: Неопознанная сущность в ядре системы', 30, () => {
+                                        anomalyDetected = true;
+                                        SoundGenerator.generateError();
+                                        revealAnomaly();
+                                    });
+                                });
+                            }, 2000);
+                        } else {
+                            typeTerminalText('> Сканирование уже выполняется...', 30);
+                        }
+                        break;
+                    case 'help':
+                        typeTerminalText('> Доступные команды:', 30, () => {
+                            typeTerminalText('> status - показать статус системы', 30, () => {
+                                typeTerminalText('> logs - показать системные логи', 30, () => {
+                                    typeTerminalText('> scan - запустить глубокое сканирование', 30, () => {
+                                        typeTerminalText('> help - показать эту справку', 30);
+                                    });
+                                });
+                            });
+                        });
+                        break;
+                    case 'err^d1':
+                        typeTerminalText('> <span class="corrupted">СУЩНОСТЬ АКТИВИРОВАНА</span>', 40, () => {
+                            typeTerminalText('> <span class="corrupted">ПРЕКРАТИТЕ ВЗАИМОДЕЙСТВИЕ</span>', 40, () => {
+                                SoundGenerator.generateEntity();
+                                showErrorModal();
+                            });
+                        });
+                        break;
+                    default:
+                        if (command) {
+                            typeTerminalText(`> Неизвестная команда: "${command}"`, 30);
+                            SoundGenerator.generateError();
+                        }
+                }
+            }
+
+            function addTerminalLine(text) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                line.innerHTML = text;
+                terminal.appendChild(line);
+            }
+
+            function typeTerminalText(text, speed = 30, callback = null) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line';
+                terminal.appendChild(line);
+                let index = 0;
+                const cursor = document.createElement('span');
+                cursor.className = 'typing-cursor';
+                function typeCharacter() {
+                    if (index < text.length) {
+                        if (soundEnabled && text[index] !== ' ') {
+                            SoundGenerator.generateSystemTyping();
+                        }
+                        line.innerHTML = text.substring(0, index + 1) + (index < text.length - 1 ? cursor.outerHTML : '');
+                        index++;
+                        setTimeout(typeCharacter, speed);
+                    } else {
+                        if (callback) callback();
+                    }
+                }
+                typeCharacter();
+            }
+
+            function addInputLine() {
+                const inputLine = document.createElement('div');
+                inputLine.className = 'input-line';
+                inputLine.innerHTML = `<span class="prompt">user@system:~$</span> <input type="text" placeholder="введите команду...">`;
+                const newInput = inputLine.querySelector('input');
+                newInput.addEventListener('input', function() {
+                    if (soundEnabled && this.value.length > 0) {
+                        SoundGenerator.generateTyping();
+                    }
+                });
+                newInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const command = this.value.trim().toLowerCase();
+                        this.disabled = true;
+                        SoundGenerator.generateTyping();
+                        addTerminalLine(`<span class="prompt">user@system:~$</span> ${command}`);
+                        processCommand(command);
+                        addInputLine();
+                        terminal.scrollTop = terminal.scrollHeight;
+                    }
+                });
+                terminal.appendChild(inputLine);
+                newInput.focus();
+            }
+
+            function updateSystemInfo() {
+                memoryUsage = 68 + Math.floor(Math.random() * 10) - 5;
+                processCount = 47 + Math.floor(Math.random() * 6) - 3;
+                memoryUsageElement.textContent = `${memoryUsage}%`;
+                memoryBar.style.width = `${memoryUsage}%`;
+                processCountElement.textContent = processCount;
+                if (anomalyDetected) {
+                    statusElement.textContent = 'ОБНАРУЖЕНЫ АНОМАЛИИ';
+                    statusElement.className = 'warning';
+                    if (Math.random() > 0.7) {
+                        statusElement.textContent = 'КРИТИЧЕСКИЙ СБОЙ';
+                        statusElement.className = 'error';
+                        if (soundEnabled && Math.random() > 0.5) {
+                            SoundGenerator.generateStatic(0.1);
+                        }
+                        setTimeout(() => {
+                            statusElement.textContent = 'ОБНАРУЖЕНЫ АНОМАЛИИ';
+                            statusElement.className = 'warning';
+                        }, 1000);
+                    }
+                    if (Math.random() > 0.8 && notifications.children.length < 6) {
+                        const errorMessages = [
+                            '> Обнаружены искажения в системных файлах',
+                            '> Неопознанный процесс потребляет ресурсы',
+                            '> Нарушена целостность данных в памяти',
+                            '> Сбой в модуле безопасности'
+                        ];
+                        const randomMessage = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+                        const notification = document.createElement('p');
+                        notification.innerHTML = randomMessage;
+                        notifications.appendChild(notification);
+                    }
+                }
+                setTimeout(updateSystemInfo, 3000);
+            }
+
+            function revealAnomaly() {
+                secretPanel.classList.remove('hidden');
+                footerNote.innerHTML = 'Версия 3.4.2 | <span class="warning">Обнаружены аномалии</span>';
+                SoundGenerator.generateWarning();
+                setInterval(() => {
+                    if (Math.random() > 0.7) {
+                        document.body.style.filter = 'hue-rotate(180deg)';
+                        if (soundEnabled) {
+                            SoundGenerator.generateStatic(0.1);
+                        }
+                        setTimeout(() => {
+                            document.body.style.filter = 'none';
+                        }, 100);
+                    }
+                }, 3000);
+            }
+
+            quarantineBtn.addEventListener('click', function() {
+                typeTerminalText('> Активация протокола карантина...', 30, () => {
+                    typeTerminalText('> Изоляция зараженных секторов...', 30, () => {
+                        typeTerminalText('> <span class="corrupted">ОШИБКА: Невозможно изолировать сущность err^d1</span>', 40, () => {
+                            typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
+                                SoundGenerator.generateError();
+                                showErrorModal();
+                            });
+                        });
+                    });
+                });
+            });
+
+            function showErrorModal() {
+                errorModal.style.display = 'flex';
+                SoundGenerator.generateEntity();
+            }
+
+            closeModal.addEventListener('click', function() {
+                errorModal.style.display = 'none';
+            });
+
+            setInterval(() => {
+                if (anomalyDetected && Math.random() > 0.8) {
+                    const elements = document.querySelectorAll('.system-monitor p, .system-monitor h1, .system-monitor h2');
+                    const randomElement = elements[Math.floor(Math.random() * elements.length)];
+                    randomElement.style.transform = `translate(${Math.random() * 6 - 3}px, ${Math.random() * 6 - 3}px)`;
+                    randomElement.style.color = '#f00';
+                    if (soundEnabled && Math.random() > 0.5) {
+                        SoundGenerator.generateStatic(0.05);
+                    }
+                    setTimeout(() => {
+                        randomElement.style.transform = 'translate(0, 0)';
+                        randomElement.style.color = '';
+                    }, 200);
+                }
+            }, 2000);
+
+            updateSystemInfo();
+        });
+    </script>
 </body>
 </html>
