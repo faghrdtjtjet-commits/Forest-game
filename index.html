@@ -373,8 +373,7 @@
         }
 
         .system-monitor .input-line.hidden {
-            opacity: 0;
-            pointer-events: none;
+            display: none;
         }
 
         .system-monitor .input-line input {
@@ -617,7 +616,7 @@
                     <div class="minecraft-block">
                         <h3>Описание</h3>
                         <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
-                        <img src="herobrine.jpg" alt="Herobrine" class="minecraft-image" style="width: 64px; height: 49px;">
+                        <img src="herobrine.jpg" alt="Herobrine" class="minecraft-image" style="width: 256px; height: 196px;">
                     </div>
 
                     <div class="minecraft-block">
@@ -631,7 +630,7 @@
                     <div class="minecraft-block">
                         <h3>Особенности</h3>
                         <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
-                        <img src="null.jpg" alt="Null" class="minecraft-image" style="width: 64px; height: 64px;">
+                        <img src="null.jpg" alt="Null" class="minecraft-image" style="width: 256px; height: 256px;">
                     </div>
 
                     <h2>Entity 303</h2>
@@ -661,7 +660,7 @@
                                 <td>Иммунитет к лаве и огню, может телепортироваться</td>
                             </tr>
                         </table>
-                        <img src="entity303.jpg" alt="Entity 303" class="minecraft-image" style="width: 64px; height: 43px;">
+                        <img src="entity303.jpg" alt="Entity 303" class="minecraft-image" style="width: 256px; height: 172px;">
                     </div>
 
                     <div class="arg-button-container">
@@ -735,8 +734,8 @@
                         <div class="terminal-line">> Инициализация терминала...</div>
                         <div class="terminal-line">> Загрузка параметров доступа...</div>
                         <div class="terminal-line">> Готов к вводу команд.</div>
-                        <div class="terminal-line" id="inputLine"><span class="prompt">user@system:~$</span> <span class="input-line"><input type="text" id="commandInput" placeholder="введите команду..."></span></div>
                     </div>
+                    <div class="input-line hidden" id="inputLine"><span class="prompt">user@system:~$</span> <span class="input-line"><input type="text" id="commandInput" placeholder="введите команду..."></span></div>
                     <p class="typewriter" id="helpText">Доступные команды: status, logs, scan, help</p>
                 </div>
 
@@ -1161,6 +1160,8 @@
                 }
                 inputLine.querySelector('span.prompt').textContent = '';
                 inputLine.querySelector('span.input-line').style.opacity = 0;
+                // Перемещаем inputLine после всех строк
+                terminal.appendChild(inputLine);
                 typePrompt();
             }
 
