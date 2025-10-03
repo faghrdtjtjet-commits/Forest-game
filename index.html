@@ -1040,7 +1040,7 @@
                 switch(command) {
                     case 'status':
                         typeTerminalText('> Статус системы: НОРМАЛЬНЫЙ', 30, () => {
-                            typeTerminalText('> Все процессы работают в штатном режиме', 30, addInputLineAnimated);
+                            typeTerminalText('> Все процессы работают в штатном режиме', 30, showInputLine);
                         });
                         break;
                     case 'logs':
@@ -1051,10 +1051,10 @@
                                         if (scanCount >= 2) {
                                             typeTerminalText('> Лог 004: <span class="corrupted">ОБНАРУЖЕНА СУЩНОСТЬ err^d1 В ПОДСИСТЕМЕ ПАМЯТИ</span>', 40, () => {
                                                 SoundGenerator.generateWarning();
-                                                addInputLineAnimated();
+                                                showInputLine();
                                             });
                                         } else {
-                                            addInputLineAnimated();
+                                            showInputLine();
                                         }
                                     });
                                 });
@@ -1068,7 +1068,7 @@
                             if (scanCount === 1) {
                                 setTimeout(() => {
                                     typeTerminalText('> Сканирование завершено. Незначительные аномалии обнаружены.', 30, () => {
-                                        typeTerminalText('> Рекомендуется повторное сканирование для уточнения данных.', 30, addInputLineAnimated);
+                                        typeTerminalText('> Рекомендуется повторное сканирование для уточнения данных.', 30, showInputLine);
                                     });
                                 }, 1500);
                             } else if (scanCount === 2) {
@@ -1078,12 +1078,12 @@
                                             anomalyDetected = true;
                                             SoundGenerator.generateError();
                                             revealAnomaly();
-                                            addInputLineAnimated();
+                                            showInputLine();
                                         });
                                     });
                                 }, 2000);
                             } else {
-                                typeTerminalText('> Сканирование уже выполняется...', 30, addInputLineAnimated);
+                                typeTerminalText('> Сканирование уже выполняется...', 30, showInputLine);
                             }
                         });
                         break;
@@ -1092,7 +1092,7 @@
                             typeTerminalText('> status - показать статус системы', 30, () => {
                                 typeTerminalText('> logs - показать системные логи', 30, () => {
                                     typeTerminalText('> scan - запустить глубокое сканирование', 30, () => {
-                                        typeTerminalText('> help - показать эту справку', 30, addInputLineAnimated);
+                                        typeTerminalText('> help - показать эту справку', 30, showInputLine);
                                     });
                                 });
                             });
@@ -1103,13 +1103,13 @@
                             typeTerminalText('> <span class="corrupted">ПРЕКРАТИТЕ ВЗАИМОДЕЙСТВИЕ</span>', 40, () => {
                                 SoundGenerator.generateEntity();
                                 showErrorModal();
-                                addInputLineAnimated();
+                                showInputLine();
                             });
                         });
                         break;
                     default:
                         if (command) {
-                            typeTerminalText(`> Неизвестная команда: "${command}"`, 30, addInputLineAnimated);
+                            typeTerminalText(`> Неизвестная команда: "${command}"`, 30, showInputLine);
                             SoundGenerator.generateError();
                         }
                 }
@@ -1144,27 +1144,13 @@
                 typeCharacter();
             }
 
-            function addInputLineAnimated() {
+            function showInputLine() {
                 inputLine.classList.remove('hidden');
                 const input = inputLine.querySelector('input');
                 input.value = '';
                 input.focus();
-                let prompt = 'user@system:~$';
-                let index = 0;
-                function typePrompt() {
-                    if (index <= prompt.length) {
-                        inputLine.querySelector('span.prompt').textContent = prompt.substring(0, index);
-                        index++;
-                        setTimeout(typePrompt, 100); // Скорость появления по букве
-                    } else {
-                        inputLine.querySelector('span.input-line').style.opacity = 1;
-                    }
-                }
-                inputLine.querySelector('span.prompt').textContent = '';
-                inputLine.querySelector('span.input-line').style.opacity = 0;
-                // Перемещаем inputLine после всех строк
-                terminal.appendChild(inputLine);
-                typePrompt();
+                terminal.appendChild(inputLine); // Убеждаемся, что inputLine в конце терминала
+                terminal.scrollTop = terminal.scrollHeight; // Прокрутка к последней строке
             }
 
             function updateSystemInfo() {
@@ -1227,7 +1213,7 @@
                             typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
                                 SoundGenerator.generateError();
                                 showErrorModal();
-                                addInputLineAnimated();
+                                showInputLine();
                             });
                         });
                     });
@@ -1259,6 +1245,8 @@
                 }
             }, 2000);
 
+            // Инициализация с показом поля ввода после загрузки
+            showInputLine();
             updateSystemInfo();
         });
     </script>
