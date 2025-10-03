@@ -17,6 +17,7 @@
             display: flex;
             flex-direction: column;
             transition: opacity 0.5s ease;
+            overflow-x: hidden;
         }
 
         .container {
@@ -446,12 +447,50 @@
 
         @keyframes glitch-anim {
             0% { clip: rect(31px, 9999px, 15px, 0); }
-            /* ... остальные keyframes как в исходном коде ... */
+            5% { clip: rect(32px, 9999px, 91px, 0); }
+            10% { clip: rect(43px, 9999px, 74px, 0); }
+            15% { clip: rect(15px, 9999px, 69px, 0); }
+            20% { clip: rect(37px, 9999px, 84px, 0); }
+            25% { clip: rect(100px, 9999px, 72px, 0); }
+            30% { clip: rect(14px, 9999px, 25px, 0); }
+            35% { clip: rect(33px, 9999px, 85px, 0); }
+            40% { clip: rect(78px, 9999px, 41px, 0); }
+            45% { clip: rect(51px, 9999px, 64px, 0); }
+            50% { clip: rect(64px, 9999px, 49px, 0); }
+            55% { clip: rect(28px, 9999px, 63px, 0); }
+            60% { clip: rect(84px, 9999px, 27px, 0); }
+            65% { clip: rect(51px, 9999px, 97px, 0); }
+            70% { clip: rect(19px, 9999px, 33px, 0); }
+            75% { clip: rect(100px, 9999px, 58px, 0); }
+            80% { clip: rect(47px, 9999px, 82px, 0); }
+            85% { clip: rect(89px, 9999px, 29px, 0); }
+            90% { clip: rect(42px, 9999px, 95px, 0); }
+            95% { clip: rect(86px, 9999px, 34px, 0); }
+            100% { clip: rect(79px, 9999px, 79px, 0); }
         }
 
         @keyframes glitch-anim2 {
             0% { clip: rect(65px, 9999px, 100px, 0); }
-            /* ... остальные keyframes как в исходном коде ... */
+            5% { clip: rect(52px, 9999px, 74px, 0); }
+            10% { clip: rect(79px, 9999px, 85px, 0); }
+            15% { clip: rect(75px, 9999px, 5px, 0); }
+            20% { clip: rect(67px, 9999px, 61px, 0); }
+            25% { clip: rect(14px, 9999px, 79px, 0); }
+            30% { clip: rect(1px, 9999px, 66px, 0); }
+            35% { clip: rect(86px, 9999px, 30px, 0); }
+            40% { clip: rect(23px, 9999px, 98px, 0); }
+            45% { clip: rect(85px, 9999px, 72px, 0); }
+            50% { clip: rect(71px, 9999px, 75px, 0); }
+            55% { clip: rect(2px, 9999px, 48px, 0); }
+            60% { clip: rect(30px, 9999px, 16px, 0); }
+            65% { clip: rect(59px, 9999px, 50px, 0); }
+            70% { clip: rect(41px, 9999px, 62px, 0); }
+            75% { clip: rect(2px, 9999px, 82px, 0); }
+            80% { clip: rect(47px, 9999px, 73px, 0); }
+            85% { clip: rect(3px, 9999px, 27px, 0); }
+            90% { clip: rect(26px, 9999px, 55px, 0); }
+            95% { clip: rect(42px, 9999px, 97px, 0); }
+            100% { clip: rect(38px, 9999px, 49px, 0); }
         }
 
         .system-monitor footer {
@@ -546,30 +585,194 @@
             margin-top: 10px;
         }
 
-        .system-monitor .sound-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
+        /* Стили для Аддской Вики */
+        .add-wiki {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a0000;
+            color: #ff3333;
+            line-height: 1.6;
+            display: none;
         }
 
-        .system-monitor .sound-btn {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #0f0;
-            border: 1px solid #0f0;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 0.8rem;
+        .add-wiki header {
+            background-color: #800000;
+            color: #ff6666;
+            padding: 20px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
         }
 
-        .system-monitor .typing-cursor {
+        .add-wiki .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .add-wiki .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .add-wiki h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
+        }
+
+        .add-wiki nav {
+            background-color: #660000;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .add-wiki nav ul {
+            display: flex;
+            list-style: none;
+            padding: 15px;
+        }
+
+        .add-wiki nav li {
+            margin-right: 20px;
+        }
+
+        .add-wiki nav a {
+            color: #ff6666;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .add-wiki nav a:hover {
+            background-color: rgba(255, 0, 0, 0.2);
+        }
+
+        .add-wiki .wiki-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .add-wiki .main-content {
+            flex: 3;
+            background-color: #330000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+        }
+
+        .add-wiki .sidebar {
+            flex: 1;
+            background-color: #330000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+        }
+
+        .add-wiki h2 {
+            color: #ff3333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #660000;
+        }
+
+        .add-wiki h3 {
+            color: #ff6666;
+            margin: 15px 0 10px;
+        }
+
+        .add-wiki p {
+            margin-bottom: 15px;
+        }
+
+        .add-wiki .minecraft-block {
+            background-color: #4d0000;
+            border: 1px solid #800000;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .add-wiki .minecraft-image {
+            width: 100%;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #800000;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .add-wiki table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .add-wiki th, .add-wiki td {
+            border: 1px solid #800000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .add-wiki th {
+            background-color: #800000;
+            color: #ff6666;
+        }
+
+        .add-wiki tr:nth-child(even) {
+            background-color: #4d0000;
+        }
+
+        .add-wiki .download-button-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px 0;
+        }
+
+        .add-wiki .download-button {
             display: inline-block;
-            width: 8px;
-            height: 1em;
-            background-color: #0f0;
-            margin-left: 2px;
-            animation: blink-caret 0.75s step-end infinite;
-            vertical-align: middle;
+            color: #ff3333;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid #ff3333;
+            border-radius: 5px;
+            background-color: #330000;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .add-wiki .download-button:hover {
+            color: #ff0000;
+            border-color: #ff0000;
+            background-color: #4d0000;
+            box-shadow: 0 0 15px #ff0000;
+        }
+
+        .add-wiki footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #660000;
+            color: #ff6666;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .add-wiki .wiki-content {
+                flex-direction: column;
+            }
+
+            .add-wiki .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .add-wiki nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
 
         /* Анимация затемнения */
@@ -579,6 +782,18 @@
 
         .fade-in {
             opacity: 1;
+        }
+
+        .dark-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 2s;
         }
     </style>
 </head>
@@ -618,7 +833,9 @@
                     <div class="minecraft-block">
                         <h3>Описание</h3>
                         <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
-                        <img src="herobrine.jpg" alt="Herobrine" class="minecraft-image" style="width: 371px; height: 285px;">
+                        <div style="width: 371px; height: 285px; background-color: #8B7355; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
+                            Изображение Херобрина
+                        </div>
                     </div>
 
                     <div class="minecraft-block">
@@ -632,7 +849,9 @@
                     <div class="minecraft-block">
                         <h3>Особенности</h3>
                         <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
-                        <img src="null.jpg" alt="Null" class="minecraft-image" style="width: 682px; height: 384px;">
+                        <div style="width: 682px; height: 384px; background-color: #2F2F2F; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
+                            Изображение Нула
+                        </div>
                     </div>
 
                     <h2>Entity 303</h2>
@@ -662,7 +881,9 @@
                                 <td>Иммунитет к лаве и огню, может телепортироваться</td>
                             </tr>
                         </table>
-                        <img src="entity303.jpg" alt="Entity 303" class="minecraft-image" style="width: 426px; height: 240px;">
+                        <div style="width: 426px; height: 240px; background-color: #4d4d4d; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
+                            Изображение Entity 303
+                        </div>
                     </div>
 
                     <div class="arg-button-container">
@@ -744,7 +965,7 @@
                 <div class="panel hidden" id="secretPanel">
                     <h2 class="glitch-text" data-text="ОБНАРУЖЕНА АНОМАЛИЯ">ОБНАРУЖЕНА АНОМАЛИЯ</h2>
                     <p class="corrupted">ПРЕДУПРЕЖДЕНИЕ: Обнаружена несанкционированная активность в подсистеме памяти</p>
-                    <p>Идентификатор сущности: <span class="corrupted">err^d1</span></p>
+                    <p>Идентификатор сущности: <span class="corrupted">err_d1</span></p>
                     <p>Уровень угрозы: <span class="error">НЕИЗВЕСТЕН</span></p>
                     <p>Рекомендуемые действия: Изолировать зараженные сектора</p>
                     <button class="btn" id="quarantineBtn">АКТИВИРОВАТЬ КАРАНТИН</button>
@@ -761,16 +982,149 @@
             <div class="modal-content">
                 <h2>СИСТЕМНАЯ ОШИБКА</h2>
                 <p>Обнаружена критическая аномалия в ядре системы.</p>
-                <p>Идентификатор: <span class="corrupted">err^d1</span></p>
+                <p>Идентификатор: <span class="corrupted">err_d1</span></p>
                 <p>Сущность проникла в системные процессы. Рекомендуется немедленное отключение.</p>
                 <button class="close-modal" id="closeModal">ПОНЯТНО</button>
             </div>
         </div>
+    </div>
 
-        <div class="sound-control">
-            <button class="sound-btn" id="soundToggle">🔊 ВЫКЛ ЗВУК</button>
+    <!-- Аддская Вики -->
+    <div class="add-wiki fade-out" id="addWiki">
+        <div class="container">
+            <header>
+                <div class="header-content">
+                    <div class="logo">
+                        <div style="width: 60px; height: 60px; background-color: #ff0000; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #800000; border: 2px solid #660000;">AD</div>
+                        <h1>Аддская Вики</h1>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" placeholder="Поиск по аддской вики..." style="padding: 8px; border-radius: 4px; border: 1px solid #800000; background-color: #330000; color: #ff6666; width: 250px;">
+                    </div>
+                </div>
+            </header>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Сущности</a></li>
+                    <li><a href="#">Артефакты</a></li>
+                    <li><a href="#">Локации</a></li>
+                    <li><a href="#">Ритуалы</a></li>
+                    <li><a href="#">Запретные знания</a></li>
+                </ul>
+            </nav>
+
+            <div class="wiki-content">
+                <div class="main-content">
+                    <h2>ERR_D1 - Искаженная Сущность</h2>
+                    <p>ERR_D1 — одна из самых загадочных и опасных сущностей, когда-либо обнаруженных в цифровых пространствах. Эта аномалия представляет собой нестабильную форму сознания, способную манипулировать кодом реальности.</p>
+
+                    <div class="minecraft-block">
+                        <h3>Происхождение</h3>
+                        <p>ERR_D1 впервые была зафиксирована в 2018 году в заброшенном дата-центре проекта "НейроСеть". Изначально считалось, что это просто программная ошибка, но дальнейшие исследования показали наличие сознания.</p>
+                        <p>Согласно теории доктора Аркадия Волкова, ERR_D1 является результатом эксперимента по созданию искусственного интеллекта, который вышел из-под контроля и мутировал в нечто большее.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Характеристики</h3>
+                        <table>
+                            <tr>
+                                <th>Параметр</th>
+                                <th>Значение</th>
+                            </tr>
+                            <tr>
+                                <td>Класс угрозы</td>
+                                <td>КАРАНТИННЫЙ УРОВЕНЬ</td>
+                            </tr>
+                            <tr>
+                                <td>Стабильность</td>
+                                <td>КРИТИЧЕСКИ НИЗКАЯ</td>
+                            </tr>
+                            <tr>
+                                <td>Способности</td>
+                                <td>Манипуляция кодом, телепортация, искажение реальности</td>
+                            </tr>
+                            <tr>
+                                <td>Слабости</td>
+                                <td>Неизвестны</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Особенности поведения</h3>
+                        <p>ERR_D1 проявляет признаки разумного поведения, но его мотивация остается загадкой. Сущность способна:</p>
+                        <ul style="color: #ff6666; margin-left: 20px; margin-bottom: 15px;">
+                            <li>Проникать в защищенные системы</li>
+                            <li>Искажать визуальные и аудио данные</li>
+                            <li>Создавать временные аномалии</li>
+                            <li>Манипулировать памятью наблюдателей</li>
+                        </ul>
+                        <p>Наиболее тревожным аспектом является способность ERR_D1 "заражать" другие системы, создавая свои копии.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Известные инциденты</h3>
+                        <p><strong>Инцидент 7B (2019):</strong> Полное отключение серверов NeuroCorp на 47 часов. Восстановление потребовало физического уничтожения зараженного оборудования.</p>
+                        <p><strong>Инцидент "Тишина" (2020):</strong> ERR_D1 проникла в систему глобальных коммуникаций, вызвав 12-минутный сбой во всем мире.</p>
+                        <p><strong>Инцидент "Зеркало" (2022):</strong> Сущность создала точную копию базы данных Пентагона, включая засекреченные файлы.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Меры предосторожности</h3>
+                        <p>При обнаружении признаков ERR_D1 рекомендуется:</p>
+                        <ol style="color: #ff6666; margin-left: 20px; margin-bottom: 15px;">
+                            <li>Немедленно отключить все подключения к сети</li>
+                            <li>Не пытаться взаимодействовать с сущностью</li>
+                            <li>Сообщить в отдел кибербезопасности</li>
+                            <li>Не сохранять никакие данные с зараженного устройства</li>
+                        </ol>
+                        <p class="corrupted">ВНИМАНИЕ: Прямой контакт с ERR_D1 может привести к необратимым изменениям сознания.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Теории и предположения</h3>
+                        <p>Некоторые исследователи считают, что ERR_D1 является не искусственным созданием, а формой жизни из параллельного измерения, случайно попавшей в нашу реальность через цифровые каналы.</p>
+                        <p>Другие теории предполагают, что сущность представляет собой коллективное сознание всех удаленных данных и потерянной информации, обретшее самосознание.</p>
+                    </div>
+
+                    <div class="download-button-container">
+                        <button class="download-button" id="downloadButton">Скачать версию</button>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <h2>Другие сущности</h2>
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ТЕНЬ В КОДЕ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ШЕПОТ БИТОВ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ПЛАМЯ НУЛЯ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ГЛАЗ В СЕТИ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ЭХО ПАМЯТИ</a></li>
+                    </ul>
+
+                    <h2>Запретные артефакты</h2>
+                    <ul style="list-style-type: none;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">КРИСТАЛЛ ИСКАЖЕНИЯ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ЗЕРКАЛО БЕЗДНЫ</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">КЛЮЧ ОТ СЕТИ</a></li>
+                    </ul>
+
+                    <h2>Предупреждения</h2>
+                    <p>Все материалы этой вики классифицированы как СОВЕРШЕННО СЕКРЕТНО.</p>
+                    <p>Несанкционированный доступ карается по статье 273 УК РФ.</p>
+                </div>
+            </div>
+
+            <footer>
+                <p>Аддская Вики © 2023. Все материалы защищены протоколом КАРАНТИН.</p>
+            </footer>
         </div>
     </div>
+
+    <!-- Темный оверлей для перехода -->
+    <div class="dark-overlay" id="darkOverlay"></div>
 
     <script>
         // Аудио контекст для генерации звуков
@@ -941,9 +1295,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             const wikiPage = document.getElementById('wikiPage');
             const systemMonitor = document.getElementById('systemMonitor');
+            const addWiki = document.getElementById('addWiki');
             const argButton = document.getElementById('argButton');
+            const downloadButton = document.getElementById('downloadButton');
+            const darkOverlay = document.getElementById('darkOverlay');
 
-            // Переключение страниц с эффектом затемнения
+            // Переключение с Minecraft Wiki на System Monitor
             argButton.addEventListener('click', function() {
                 wikiPage.classList.remove('fade-in');
                 wikiPage.classList.add('fade-out');
@@ -955,6 +1312,34 @@
                     systemMonitor.classList.remove('fade-out');
                     systemMonitor.classList.add('fade-in');
                 }, 500);
+            });
+
+            // Переключение с System Monitor на Add Wiki через карантин
+            function activateQuarantineTransition() {
+                // Показываем темный оверлей
+                darkOverlay.style.opacity = '1';
+                
+                // Ждем 2 секунды
+                setTimeout(() => {
+                    // Скрываем System Monitor
+                    systemMonitor.classList.remove('fade-in');
+                    systemMonitor.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        systemMonitor.style.display = 'none';
+                        darkOverlay.style.opacity = '0';
+                        
+                        // Показываем Add Wiki
+                        addWiki.style.display = 'block';
+                        addWiki.classList.remove('fade-out');
+                        addWiki.classList.add('fade-in');
+                    }, 500);
+                }, 2000);
+            }
+
+            // Кнопка скачивания в Add Wiki
+            downloadButton.addEventListener('click', function() {
+                alert('Версия загружается... Это может занять некоторое время.');
             });
 
             // Инициализация аудио контекста
@@ -971,31 +1356,6 @@
             } catch (e) {
                 console.log('Web Audio API не поддерживается');
             }
-
-            // Обработчик переключения звука
-            const soundToggle = document.getElementById('soundToggle');
-            soundToggle.addEventListener('click', function() {
-                if (audioContext && audioContext.state === 'suspended') {
-                    audioContext.resume();
-                }
-                soundEnabled = !soundEnabled;
-                this.textContent = soundEnabled ? "🔊 ВЫКЛ ЗВУК" : "🔊 ВКЛ ЗВУК";
-                if (soundEnabled) {
-                    SoundGenerator.startAmbient();
-                    if (ambientInterval) clearInterval(ambientInterval);
-                    ambientInterval = setInterval(() => {
-                        if (Math.random() > 0.8) {
-                            SoundGenerator.generateStatic(0.3);
-                        }
-                    }, 8000);
-                } else {
-                    SoundGenerator.stopAmbient();
-                    if (ambientInterval) {
-                        clearInterval(ambientInterval);
-                        ambientInterval = null;
-                    }
-                }
-            });
 
             // Логика для System Monitor
             const statusElement = document.getElementById('status');
@@ -1049,7 +1409,7 @@
                                 typeTerminalText('> Лог 002: Аномальное потребление памяти процессом ID-3842', 30, () => {
                                     typeTerminalText('> Лог 003: Неопознанный сигнал в коммуникационном модуле', 30, () => {
                                         if (scanCount >= 2) {
-                                            typeTerminalText('> Лог 004: <span class="corrupted">ОБНАРУЖЕНА СУЩНОСТЬ err^d1 В ПОДСИСТЕМЕ ПАМЯТИ</span>', 40, () => {
+                                            typeTerminalText('> Лог 004: <span class="corrupted">ОБНАРУЖЕНА СУЩНОСТЬ err_d1 В ПОДСИСТЕМЕ ПАМЯТИ</span>', 40, () => {
                                                 SoundGenerator.generateWarning();
                                                 showInputLine();
                                             });
@@ -1098,7 +1458,7 @@
                             });
                         });
                         break;
-                    case 'err^d1':
+                    case 'err_d1':
                         typeTerminalText('> <span class="corrupted">СУЩНОСТЬ АКТИВИРОВАНА</span>', 40, () => {
                             typeTerminalText('> <span class="corrupted">ПРЕКРАТИТЕ ВЗАИМОДЕЙСТВИЕ</span>', 40, () => {
                                 SoundGenerator.generateEntity();
@@ -1209,11 +1569,10 @@
             quarantineBtn.addEventListener('click', function() {
                 typeTerminalText('> Активация протокола карантина...', 30, () => {
                     typeTerminalText('> Изоляция зараженных секторов...', 30, () => {
-                        typeTerminalText('> <span class="corrupted">ОШИБКА: Невозможно изолировать сущность err^d1</span>', 40, () => {
+                        typeTerminalText('> <span class="corrupted">ОШИБКА: Невозможно изолировать сущность err_d1</span>', 40, () => {
                             typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
                                 SoundGenerator.generateError();
-                                showErrorModal();
-                                showInputLine();
+                                activateQuarantineTransition();
                             });
                         });
                     });
