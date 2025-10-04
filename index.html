@@ -176,7 +176,7 @@
 
         .wiki-page .arg-button {
             display: inline-block;
-            color: #aaa;
+            color: #ff0000; /* Изменено на красный цвет */
             font-size: 14px;
             text-decoration: none;
             padding: 2px 5px;
@@ -188,7 +188,7 @@
         }
 
         .wiki-page .arg-button:hover {
-            color: #666;
+            color: #cc0000;
             border-color: #999;
             background-color: #eee;
         }
@@ -789,7 +789,7 @@
                     </div>
 
                     <div class="arg-button-container">
-                        <button class="arg-button" id="argButton" title="Перейти в АРГ">?</button>
+                        <button class="arg-button" id="argButton" title="Перейти в АРГ">!!!</button>
                     </div>
                 </div>
 
@@ -994,6 +994,8 @@
         let audioContext;
         let soundEnabled = true;
         let ambientInterval;
+        let lastQuarantineSoundTime = 0;
+        const SOUND_COOLDOWN = 2000; // 2 секунды задержки между звуками карантина
 
         const SoundGenerator = {
             generateStatic(duration = 0.5) {
@@ -1101,6 +1103,9 @@
 
             generateEntity() {
                 if (!audioContext || !soundEnabled) return;
+                const now = Date.now();
+                if (now - lastQuarantineSoundTime < SOUND_COOLDOWN) return;
+                lastQuarantineSoundTime = now;
                 for (let i = 0; i < 4; i++) {
                     setTimeout(() => {
                         const oscillator = audioContext.createOscillator();
@@ -1427,7 +1432,7 @@
                     typeTerminalText('> Изоляция зараженных секторов...', 30, () => {
                         typeTerminalText('> <span class="corrupted">ОШИБКА: Невозможно изолировать сущность err_d1</span>', 40, () => {
                             typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
-                                SoundGenerator.generateError();
+                                SoundGenerator.generateEntity();
                                 showErrorModal();
                                 switchToNetherWiki();
                             });
