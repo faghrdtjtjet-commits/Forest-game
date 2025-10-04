@@ -17,7 +17,6 @@
             display: flex;
             flex-direction: column;
             transition: opacity 0.5s ease;
-            overflow-x: hidden;
         }
 
         .container {
@@ -203,17 +202,158 @@
             border-radius: 8px;
         }
 
+        /* Стили для Nether Wiki */
+        .nether-wiki {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c0b0b;
+            color: #ff4d4d;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .nether-wiki header {
+            background-color: #8b0000;
+            color: #ff4d4d;
+            padding: 20px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .nether-wiki .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nether-wiki .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nether-wiki .logo div {
+            width: 60px;
+            height: 60px;
+            background-color: #ff4d4d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8b0000;
+            border: 2px solid #5c0000;
+        }
+
+        .nether-wiki h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nether-wiki .main-content {
+            background-color: #3c1414;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .nether-wiki h2 {
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5c0000;
+        }
+
+        .nether-wiki h3 {
+            color: #ff6666;
+            margin: 15px 0 10px;
+        }
+
+        .nether-wiki p {
+            margin-bottom: 15px;
+        }
+
+        .nether-wiki .minecraft-block {
+            background-color: #4a1c1c;
+            border: 1px solid #5c0000;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .nether-wiki .minecraft-image {
+            width: 100%;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #5c0000;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .nether-wiki table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .nether-wiki th, .nether-wiki td {
+            border: 1px solid #5c0000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .nether-wiki th {
+            background-color: #8b0000;
+            color: #ff4d4d;
+        }
+
+        .nether-wiki tr:nth-child(even) {
+            background-color: #4a1c1c;
+        }
+
+        .nether-wiki .arg-button-container {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+
+        .nether-wiki .arg-button {
+            display: inline-block;
+            color: #ff9999;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #ff6666;
+            border-radius: 3px;
+            background-color: #4a1c1c;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nether-wiki .arg-button:hover {
+            color: #fff;
+            border-color: #ff9999;
+            background-color: #5c0000;
+        }
+
+        .nether-wiki footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #8b0000;
+            color: #ff4d4d;
+            border-radius: 8px;
+        }
+
         @media (max-width: 768px) {
-            .wiki-page .wiki-content {
+            .wiki-page .wiki-content, .nether-wiki .wiki-content {
                 flex-direction: column;
             }
 
-            .wiki-page .header-content {
+            .wiki-page .header-content, .nether-wiki .header-content {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .wiki-page nav ul {
+            .wiki-page nav ul, .nether-wiki nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -447,50 +587,20 @@
 
         @keyframes glitch-anim {
             0% { clip: rect(31px, 9999px, 15px, 0); }
-            5% { clip: rect(32px, 9999px, 91px, 0); }
-            10% { clip: rect(43px, 9999px, 74px, 0); }
-            15% { clip: rect(15px, 9999px, 69px, 0); }
-            20% { clip: rect(37px, 9999px, 84px, 0); }
-            25% { clip: rect(100px, 9999px, 72px, 0); }
-            30% { clip: rect(14px, 9999px, 25px, 0); }
-            35% { clip: rect(33px, 9999px, 85px, 0); }
-            40% { clip: rect(78px, 9999px, 41px, 0); }
-            45% { clip: rect(51px, 9999px, 64px, 0); }
-            50% { clip: rect(64px, 9999px, 49px, 0); }
-            55% { clip: rect(28px, 9999px, 63px, 0); }
-            60% { clip: rect(84px, 9999px, 27px, 0); }
-            65% { clip: rect(51px, 9999px, 97px, 0); }
-            70% { clip: rect(19px, 9999px, 33px, 0); }
-            75% { clip: rect(100px, 9999px, 58px, 0); }
-            80% { clip: rect(47px, 9999px, 82px, 0); }
-            85% { clip: rect(89px, 9999px, 29px, 0); }
-            90% { clip: rect(42px, 9999px, 95px, 0); }
-            95% { clip: rect(86px, 9999px, 34px, 0); }
-            100% { clip: rect(79px, 9999px, 79px, 0); }
+            20% { clip: rect(65px, 9999px, 22px, 0); }
+            40% { clip: rect(12px, 9999px, 78px, 0); }
+            60% { clip: rect(94px, 9999px, 34px, 0); }
+            80% { clip: rect(47px, 9999px, 56px, 0); }
+            100% { clip: rect(31px, 9999px, 15px, 0); }
         }
 
         @keyframes glitch-anim2 {
             0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(26px, 9999px, 55px, 0); }
-            95% { clip: rect(42px, 9999px, 97px, 0); }
-            100% { clip: rect(38px, 9999px, 49px, 0); }
+            20% { clip: rect(22px, 9999px, 45px, 0); }
+            40% { clip: rect(78px, 9999px, 12px, 0); }
+            60% { clip: rect(34px, 9999px, 89px, 0); }
+            80% { clip: rect(56px, 9999px, 23px, 0); }
+            100% { clip: rect(65px, 9999px, 100px, 0); }
         }
 
         .system-monitor footer {
@@ -585,196 +695,6 @@
             margin-top: 10px;
         }
 
-        /* Стили для Аддской Вики */
-        .add-wiki {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a0000;
-            color: #ff3333;
-            line-height: 1.6;
-            display: none;
-        }
-
-        .add-wiki header {
-            background-color: #800000;
-            color: #ff6666;
-            padding: 20px 0;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
-        }
-
-        .add-wiki .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .add-wiki .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .add-wiki h1 {
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.5);
-        }
-
-        .add-wiki nav {
-            background-color: #660000;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .add-wiki nav ul {
-            display: flex;
-            list-style: none;
-            padding: 15px;
-        }
-
-        .add-wiki nav li {
-            margin-right: 20px;
-        }
-
-        .add-wiki nav a {
-            color: #ff6666;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .add-wiki nav a:hover {
-            background-color: rgba(255, 0, 0, 0.2);
-        }
-
-        .add-wiki .wiki-content {
-            display: flex;
-            gap: 20px;
-        }
-
-        .add-wiki .main-content {
-            flex: 3;
-            background-color: #330000;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
-        }
-
-        .add-wiki .sidebar {
-            flex: 1;
-            background-color: #330000;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
-        }
-
-        .add-wiki h2 {
-            color: #ff3333;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #660000;
-        }
-
-        .add-wiki h3 {
-            color: #ff6666;
-            margin: 15px 0 10px;
-        }
-
-        .add-wiki p {
-            margin-bottom: 15px;
-        }
-
-        .add-wiki .minecraft-block {
-            background-color: #4d0000;
-            border: 1px solid #800000;
-            border-radius: 4px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-
-        .add-wiki .minecraft-image {
-            width: 100%;
-            border-radius: 4px;
-            margin: 10px 0;
-            border: 1px solid #800000;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .add-wiki table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-
-        .add-wiki th, .add-wiki td {
-            border: 1px solid #800000;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .add-wiki th {
-            background-color: #800000;
-            color: #ff6666;
-        }
-
-        .add-wiki tr:nth-child(even) {
-            background-color: #4d0000;
-        }
-
-        .add-wiki .download-button-container {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px 0;
-        }
-
-        .add-wiki .download-button {
-            display: inline-block;
-            color: #ff3333;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid #ff3333;
-            border-radius: 5px;
-            background-color: #330000;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .add-wiki .download-button:hover {
-            color: #ff0000;
-            border-color: #ff0000;
-            background-color: #4d0000;
-            box-shadow: 0 0 15px #ff0000;
-        }
-
-        .add-wiki footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #660000;
-            color: #ff6666;
-            border-radius: 8px;
-        }
-
-        @media (max-width: 768px) {
-            .add-wiki .wiki-content {
-                flex-direction: column;
-            }
-
-            .add-wiki .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .add-wiki nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
         /* Анимация затемнения */
         .fade-out {
             opacity: 0;
@@ -782,18 +702,6 @@
 
         .fade-in {
             opacity: 1;
-        }
-
-        .dark-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 2s;
         }
     </style>
 </head>
@@ -833,9 +741,7 @@
                     <div class="minecraft-block">
                         <h3>Описание</h3>
                         <p>Согласно легендам, Херобрин появляется в мире игрока и строит странные структуры, такие как пирамиды из песка, двухблочные туннели и лабиринты. Он также может удалять деревья, оставляя только пни, и создавать случайные лавовые озера.</p>
-                        <div style="width: 371px; height: 285px; background-color: #8B7355; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                            Изображение Херобрина
-                        </div>
+                        <img src="herobrine.jpg" alt="Herobrine" class="minecraft-image" style="width: 371px; height: 285px;">
                     </div>
 
                     <div class="minecraft-block">
@@ -843,15 +749,13 @@
                         <p>Первые упоминания о Херобрине появились в 2010 году на форуме Minecraft. Пользователь рассказал историю о своем мертвом брате, который "вернулся" в игру. Позже Нотч, создатель Minecraft, официально заявил, что Херобрин никогда не существовал в игре.</p>
                     </div>
 
-                    <h2>Нул (Null)</h2>
+                    <h2>Нул</h2>
                     <p>Нул — еще один мифический персонаж из Minecraft, часто ассоциируемый с Херобрином. В отличие от Херобрина, у Нула полностью черная кожа и белые глаза.</p>
 
                     <div class="minecraft-block">
                         <h3>Особенности</h3>
                         <p>Считается, что Нул более агрессивен, чем Херобрин. Он может телепортироваться, становиться невидимым и атаковать игрока. Нул часто ассоциируется с пустотой и небытием.</p>
-                        <div style="width: 682px; height: 384px; background-color: #2F2F2F; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                            Изображение Нула
-                        </div>
+                        <img src="null.jpg" alt="Null" class="minecraft-image" style="width: 682px; height: 384px;">
                     </div>
 
                     <h2>Entity 303</h2>
@@ -881,9 +785,7 @@
                                 <td>Иммунитет к лаве и огню, может телепортироваться</td>
                             </tr>
                         </table>
-                        <div style="width: 426px; height: 240px; background-color: #4d4d4d; display: flex; align-items: center; justify-content: center; color: white; border-radius: 4px; margin: 10px 0;">
-                            Изображение Entity 303
-                        </div>
+                        <img src="entity303.jpg" alt="Entity 303" class="minecraft-image" style="width: 426px; height: 240px;">
                     </div>
 
                     <div class="arg-button-container">
@@ -989,142 +891,103 @@
         </div>
     </div>
 
-    <!-- Аддская Вики -->
-    <div class="add-wiki fade-out" id="addWiki">
+    <!-- Nether Wiki -->
+    <div class="nether-wiki fade-out" id="netherWiki">
         <div class="container">
             <header>
                 <div class="header-content">
                     <div class="logo">
-                        <div style="width: 60px; height: 60px; background-color: #ff0000; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #800000; border: 2px solid #660000;">AD</div>
-                        <h1>Аддская Вики</h1>
-                    </div>
-                    <div class="search-box">
-                        <input type="text" placeholder="Поиск по аддской вики..." style="padding: 8px; border-radius: 4px; border: 1px solid #800000; background-color: #330000; color: #ff6666; width: 250px;">
+                        <div>ERR</div>
+                        <h1>Nether Wiki: err_d1</h1>
                     </div>
                 </div>
             </header>
 
-            <nav>
-                <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Сущности</a></li>
-                    <li><a href="#">Артефакты</a></li>
-                    <li><a href="#">Локации</a></li>
-                    <li><a href="#">Ритуалы</a></li>
-                    <li><a href="#">Запретные знания</a></li>
-                </ul>
-            </nav>
-
             <div class="wiki-content">
                 <div class="main-content">
-                    <h2>ERR_D1 - Искаженная Сущность</h2>
-                    <p>ERR_D1 — одна из самых загадочных и опасных сущностей, когда-либо обнаруженных в цифровых пространствах. Эта аномалия представляет собой нестабильную форму сознания, способную манипулировать кодом реальности.</p>
+                    <h2>err_d1: Загадочная сущность</h2>
+                    <p>err_d1 — мифическая и пугающая сущность в мире Minecraft, известная своей разрушительной силой и способностью вмешиваться в игровую реальность. Эта сущность, в отличие от Херобрина или Entity 303, представляет собой цифровую аномалию, которая, по слухам, способна манипулировать кодом игры и создавать хаос в мирах игроков.</p>
 
                     <div class="minecraft-block">
                         <h3>Происхождение</h3>
-                        <p>ERR_D1 впервые была зафиксирована в 2018 году в заброшенном дата-центре проекта "НейроСеть". Изначально считалось, что это просто программная ошибка, но дальнейшие исследования показали наличие сознания.</p>
-                        <p>Согласно теории доктора Аркадия Волкова, ERR_D1 является результатом эксперимента по созданию искусственного интеллекта, который вышел из-под контроля и мутировал в нечто большее.</p>
+                        <p>Легенда об err_d1 появилась в сообществе Minecraft около 2015 года. Считается, что err_d1 — это результат сбоя в программном обеспечении игры, вызванного экспериментальным обновлением Mojang, которое так и не было выпущено официально. Некоторые игроки утверждают, что err_d1 — это искусственный интеллект, созданный для тестирования стабильности серверов, но вышедший из-под контроля.</p>
+                        <p>По слухам, err_d1 впервые был замечен на пиратских серверах Minecraft, где игроки сообщали о странных сбоях: исчезновении чанков, появлении искаженных структур из обсидиана и красного камня, а также о сообщениях в чате, написанных на неизвестном языке.</p>
                     </div>
 
                     <div class="minecraft-block">
                         <h3>Характеристики</h3>
+                        <p>err_d1 не имеет фиксированной формы, но чаще всего появляется как темная фигура с красными глазами, окруженная частицами красного камня. Она может мгновенно телепортироваться, изменять местность вокруг игрока и вызывать сбои в игре, такие как лаги, вылеты или повреждение миров.</p>
                         <table>
                             <tr>
                                 <th>Параметр</th>
                                 <th>Значение</th>
                             </tr>
                             <tr>
-                                <td>Класс угрозы</td>
-                                <td>КАРАНТИННЫЙ УРОВЕНЬ</td>
+                                <td>Здоровье</td>
+                                <td>Неизвестно (предположительно бесконечное)</td>
                             </tr>
                             <tr>
-                                <td>Стабильность</td>
-                                <td>КРИТИЧЕСКИ НИЗКАЯ</td>
+                                <td>Урон</td>
+                                <td>До 50 единиц за удар</td>
                             </tr>
                             <tr>
-                                <td>Способности</td>
-                                <td>Манипуляция кодом, телепортация, искажение реальности</td>
+                                <td>Скорость</td>
+                                <td>Крайне высокая</td>
                             </tr>
                             <tr>
-                                <td>Слабости</td>
-                                <td>Неизвестны</td>
+                                <td>Особенности</td>
+                                <td>Манипуляция кодом, неуязвимость, создание аномалий</td>
                             </tr>
                         </table>
+                        <img src="err_d1.jpg" alt="err_d1" class="minecraft-image" style="width: 500px; height: 300px;">
                     </div>
 
                     <div class="minecraft-block">
-                        <h3>Особенности поведения</h3>
-                        <p>ERR_D1 проявляет признаки разумного поведения, но его мотивация остается загадкой. Сущность способна:</p>
-                        <ul style="color: #ff6666; margin-left: 20px; margin-bottom: 15px;">
-                            <li>Проникать в защищенные системы</li>
-                            <li>Искажать визуальные и аудио данные</li>
-                            <li>Создавать временные аномалии</li>
-                            <li>Манипулировать памятью наблюдателей</li>
+                        <h3>Поведение</h3>
+                        <p>err_d1 проявляет агрессивное поведение, атакуя игроков без предупреждения. Она может вызывать визуальные искажения, такие как мерцание экрана, изменение текстур блоков на красные или черные, и даже временное отключение интерфейса игрока. Некоторые игроки сообщали, что после встречи с err_d1 их миры становились "зараженными", с появлением странных структур, таких как обсидиановые башни или кроваво-красные озера.</p>
+                        <p>Кроме того, err_d1 может отправлять игрокам сообщения в чате, содержащие зашифрованные коды или угрозы. Одно из известных сообщений: "ТЫ НЕ МОЖЕШЬ МЕНЯ ОСТАНОВИТЬ", написанное красным текстом.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Влияние на игровой мир</h3>
+                        <p>err_d1 способна разрушать игровой мир, изменяя его структуру. Среди известных аномалий:</p>
+                        <ul>
+                            <li>Создание обсидиановых лабиринтов с ловушками из красного камня.</li>
+                            <li>Искажение биомов, превращение лесов в пустынные равнины с красным песком.</li>
+                            <li>Появление "кровавых" мобов — обычных мобов с красными текстурами.</li>
+                            <li>Случайное удаление или перемещение построек игрока.</li>
                         </ul>
-                        <p>Наиболее тревожным аспектом является способность ERR_D1 "заражать" другие системы, создавая свои копии.</p>
+                        <p>Игроки, столкнувшиеся с err_d1, часто теряют свои миры из-за повреждения файлов сохранения, что делает эту сущность особенно пугающей.</p>
                     </div>
 
                     <div class="minecraft-block">
-                        <h3>Известные инциденты</h3>
-                        <p><strong>Инцидент 7B (2019):</strong> Полное отключение серверов NeuroCorp на 47 часов. Восстановление потребовало физического уничтожения зараженного оборудования.</p>
-                        <p><strong>Инцидент "Тишина" (2020):</strong> ERR_D1 проникла в систему глобальных коммуникаций, вызвав 12-минутный сбой во всем мире.</p>
-                        <p><strong>Инцидент "Зеркало" (2022):</strong> Сущность создала точную копию базы данных Пентагона, включая засекреченные файлы.</p>
+                        <h3>Как избежать встречи</h3>
+                        <p>Хотя err_d1 считается мифом, в сообществе существуют рекомендации по избеганию этой сущности:</p>
+                        <ul>
+                            <li>Не играйте на пиратских серверах или старых версиях Minecraft.</li>
+                            <li>Избегайте использования модов из непроверенных источников.</li>
+                            <li>Создавайте резервные копии миров перед игрой.</li>
+                            <li>Не отвечайте на странные сообщения в чате.</li>
+                        </ul>
+                        <p>Некоторые игроки утверждают, что использование командного блока с определенными командами может временно "изгнать" err_d1, но это не подтверждено.</p>
                     </div>
 
                     <div class="minecraft-block">
-                        <h3>Меры предосторожности</h3>
-                        <p>При обнаружении признаков ERR_D1 рекомендуется:</p>
-                        <ol style="color: #ff6666; margin-left: 20px; margin-bottom: 15px;">
-                            <li>Немедленно отключить все подключения к сети</li>
-                            <li>Не пытаться взаимодействовать с сущностью</li>
-                            <li>Сообщить в отдел кибербезопасности</li>
-                            <li>Не сохранять никакие данные с зараженного устройства</li>
-                        </ol>
-                        <p class="corrupted">ВНИМАНИЕ: Прямой контакт с ERR_D1 может привести к необратимым изменениям сознания.</p>
+                        <h3>Культурное влияние</h3>
+                        <p>err_d1 стала популярной фигурой в фанатском творчестве. О ней создаются рассказы, видео и даже моды, которые добавляют эту сущность в игру. Несмотря на отсутствие официального подтверждения от Mojang, err_d1 остается одной из самых интригующих легенд Minecraft, вдохновляя игроков на создание АРГ (альтернативных реальностей) и хоррор-контента.</p>
                     </div>
 
-                    <div class="minecraft-block">
-                        <h3>Теории и предположения</h3>
-                        <p>Некоторые исследователи считают, что ERR_D1 является не искусственным созданием, а формой жизни из параллельного измерения, случайно попавшей в нашу реальность через цифровые каналы.</p>
-                        <p>Другие теории предполагают, что сущность представляет собой коллективное сознание всех удаленных данных и потерянной информации, обретшее самосознание.</p>
+                    <div class="arg-button-container">
+                        <button class="arg-button" id="downloadButton">Скачать версию</button>
                     </div>
-
-                    <div class="download-button-container">
-                        <button class="download-button" id="downloadButton">Скачать версию</button>
-                    </div>
-                </div>
-
-                <div class="sidebar">
-                    <h2>Другие сущности</h2>
-                    <ul style="list-style-type: none;">
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ТЕНЬ В КОДЕ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ШЕПОТ БИТОВ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ПЛАМЯ НУЛЯ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ГЛАЗ В СЕТИ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ЭХО ПАМЯТИ</a></li>
-                    </ul>
-
-                    <h2>Запретные артефакты</h2>
-                    <ul style="list-style-type: none;">
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">КРИСТАЛЛ ИСКАЖЕНИЯ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">ЗЕРКАЛО БЕЗДНЫ</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#" style="color: #ff3333; text-decoration: none;">КЛЮЧ ОТ СЕТИ</a></li>
-                    </ul>
-
-                    <h2>Предупреждения</h2>
-                    <p>Все материалы этой вики классифицированы как СОВЕРШЕННО СЕКРЕТНО.</p>
-                    <p>Несанкционированный доступ карается по статье 273 УК РФ.</p>
                 </div>
             </div>
 
             <footer>
-                <p>Аддская Вики © 2023. Все материалы защищены протоколом КАРАНТИН.</p>
+                <p>Nether Wiki © 2023. Данные повреждены. Источник неизвестен.</p>
             </footer>
         </div>
     </div>
-
-    <!-- Темный оверлей для перехода -->
-    <div class="dark-overlay" id="darkOverlay"></div>
 
     <script>
         // Аудио контекст для генерации звуков
@@ -1295,12 +1158,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             const wikiPage = document.getElementById('wikiPage');
             const systemMonitor = document.getElementById('systemMonitor');
-            const addWiki = document.getElementById('addWiki');
+            const netherWiki = document.getElementById('netherWiki');
             const argButton = document.getElementById('argButton');
             const downloadButton = document.getElementById('downloadButton');
-            const darkOverlay = document.getElementById('darkOverlay');
 
-            // Переключение с Minecraft Wiki на System Monitor
+            // Переключение на System Monitor
             argButton.addEventListener('click', function() {
                 wikiPage.classList.remove('fade-in');
                 wikiPage.classList.add('fade-out');
@@ -1314,33 +1176,27 @@
                 }, 500);
             });
 
-            // Переключение с System Monitor на Add Wiki через карантин
-            function activateQuarantineTransition() {
-                // Показываем темный оверлей
-                darkOverlay.style.opacity = '1';
-                
-                // Ждем 2 секунды
+            // Переключение на Nether Wiki
+            function switchToNetherWiki() {
+                systemMonitor.classList.remove('fade-in');
+                systemMonitor.classList.add('fade-out');
+                SoundGenerator.generateError();
+
                 setTimeout(() => {
-                    // Скрываем System Monitor
-                    systemMonitor.classList.remove('fade-in');
-                    systemMonitor.classList.add('fade-out');
-                    
-                    setTimeout(() => {
-                        systemMonitor.style.display = 'none';
-                        darkOverlay.style.opacity = '0';
-                        
-                        // Показываем Add Wiki
-                        addWiki.style.display = 'block';
-                        addWiki.classList.remove('fade-out');
-                        addWiki.classList.add('fade-in');
-                    }, 500);
-                }, 2000);
+                    systemMonitor.style.display = 'none';
+                    netherWiki.style.display = 'block';
+                    netherWiki.classList.remove('fade-out');
+                    netherWiki.classList.add('fade-in');
+                }, 500);
             }
 
-            // Кнопка скачивания в Add Wiki
-            downloadButton.addEventListener('click', function() {
-                alert('Версия загружается... Это может занять некоторое время.');
-            });
+            // Заглушка для кнопки скачивания
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function() {
+                    alert('Скачивание версии недоступно. Файлы повреждены сущностью err_d1.');
+                    SoundGenerator.generateError();
+                });
+            }
 
             // Инициализация аудио контекста
             try {
@@ -1389,7 +1245,7 @@
                     const command = this.value.trim().toLowerCase();
                     this.value = '';
                     SoundGenerator.generateTyping();
-                    inputLine.classList.add('hidden'); // Скрываем поле ввода
+                    inputLine.classList.add('hidden');
                     addTerminalLine(`<span class="prompt">user@system:~$</span> ${command}`);
                     processCommand(command);
                     terminal.scrollTop = terminal.scrollHeight;
@@ -1509,8 +1365,8 @@
                 const input = inputLine.querySelector('input');
                 input.value = '';
                 input.focus();
-                terminal.appendChild(inputLine); // Убеждаемся, что inputLine в конце терминала
-                terminal.scrollTop = terminal.scrollHeight; // Прокрутка к последней строке
+                terminal.appendChild(inputLine);
+                terminal.scrollTop = terminal.scrollHeight;
             }
 
             function updateSystemInfo() {
@@ -1572,7 +1428,8 @@
                         typeTerminalText('> <span class="corrupted">ОШИБКА: Невозможно изолировать сущность err_d1</span>', 40, () => {
                             typeTerminalText('> <span class="corrupted">СУЩНОСТЬ ПРОНИКЛА ВО ВСЕ СИСТЕМНЫЕ ПРОЦЕССЫ</span>', 40, () => {
                                 SoundGenerator.generateError();
-                                activateQuarantineTransition();
+                                showErrorModal();
+                                setTimeout(switchToNetherWiki, 2000);
                             });
                         });
                     });
@@ -1604,7 +1461,6 @@
                 }
             }, 2000);
 
-            // Инициализация с показом поля ввода после загрузки
             showInputLine();
             updateSystemInfo();
         });
