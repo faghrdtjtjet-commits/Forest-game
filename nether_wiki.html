@@ -166,6 +166,57 @@
             border-radius: 8px;
         }
 
+        /* Стили для секции комментариев */
+        .nether-wiki .comments-section {
+            margin-top: 30px;
+            background-color: #3c1414;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .nether-wiki .comments-section h2 {
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5c0000;
+        }
+
+        .nether-wiki .comment {
+            background-color: #4a1c1c;
+            border: 1px solid #5c0000;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .nether-wiki .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .nether-wiki .comment-author {
+            font-weight: bold;
+            color: #ff9999;
+        }
+
+        .nether-wiki .comment-date {
+            color: #ff6666;
+        }
+
+        .nether-wiki .comment-text {
+            color: #ff4d4d;
+        }
+
+        .nether-wiki .comment-notice {
+            text-align: center;
+            color: #ff6666;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
         @media (max-width: 768px) {
             .nether-wiki .wiki-content {
                 flex-direction: column;
@@ -286,6 +337,47 @@
             <footer>
                 <p>Nether Wiki © 2023. Данные повреждены. Источник неизвестен.</p>
             </footer>
+
+            <div class="comments-section">
+                <h2>Комментарии</h2>
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">DarkCreeper99</span>
+                        <span class="comment-date">01.10.2017 22:17</span>
+                    </div>
+                    <div class="comment-text">
+                        Кто-нибудь еще пробовал запустить Minecraft: err_d1? Я нашел только один сервер, который еще работает, IP: 192.168.0.1:25565. Но он лагает ужасно, и мир постоянно глючит. Создать свой мир вообще невозможно, игра крашится сразу!
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">VoidWalker</span>
+                        <span class="comment-date">02.10.2017 03:45</span>
+                    </div>
+                    <div class="comment-text">
+                        Да, тот сервер — единственный, что остался. Пытался создать новый мир, но каждый раз вылетает с ошибкой "err_d1: world corruption". Кто-то говорил, что это из-за сущности, которая ломает генерацию мира. Жутко как-то...
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">RedstoneHacker</span>
+                        <span class="comment-date">02.10.2017 15:22</span>
+                    </div>
+                    <div class="comment-text">
+                        Я подключился к этому серверу, и там реально странно. В чате появляются сообщения типа "ТЫ НЕ УЙДЕШЬ", и блоки начинают менять текстуры сами по себе. Похоже, err_d1 реально что-то вроде вируса. Никто не знает, как починить создание миров?
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">ShadowMiner</span>
+                        <span class="comment-date">03.10.2017 09:08</span>
+                    </div>
+                    <div class="comment-text">
+                        Это не вирус, это что-то похуже. Я видел, как err_d1 спавнит обсидиановые башни прямо на глазах. Сервер один, потому что остальные, похоже, были уничтожены. Создание миров заблокировано, потому что эта штука контролирует код. Не советую туда лезть.
+                    </div>
+                </div>
+                <p class="comment-notice">Комментирование отключено из-за аномальной активности в системе.</p>
+            </div>
         </div>
     </div>
 
