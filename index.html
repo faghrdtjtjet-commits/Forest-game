@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-device-width, initial-scale=1.0">
     <title>Minecraft Wiki Experience</title>
     <style>
         /* Общие стили */
@@ -1068,6 +1068,8 @@
                 </div>
             </div>
         </div>
+        <!-- Audio element for looping sound -->
+        <audio id="loopSound" src="2fb4ddef47d606d.mp3" loop></audio>
     </div>
 
     <script>
@@ -1552,9 +1554,13 @@
 
             // Initialize Nether Wiki
             const downloadButton = document.getElementById('downloadButton');
-            if (downloadButton) {
+            const loopSound = document.getElementById('loopSound');
+            if (downloadButton && loopSound) {
                 downloadButton.addEventListener('click', function() {
                     SoundGenerator.generateError();
+                    if (soundEnabled) {
+                        loopSound.play().catch(e => console.log('Ошибка воспроизведения звука:', e));
+                    }
                     window.location.href = 'https://mega.nz/file/4RFFwDiD#CC2xsDofEfIIBlW-YhCUHHu5OPfcOdo9vTlcRYX3gnc';
                 });
             }
