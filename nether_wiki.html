@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nether Wiki</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Стили для Nether Wiki */
+        .nether-wiki {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c0b0b;
+            color: #ff4d4d;
+            line-height: 1.6;
+        }
+
+        .nether-wiki header {
+            background-color: #8b0000;
+            color: #ff4d4d;
+            padding: 20px 0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .nether-wiki .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nether-wiki .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nether-wiki .logo div {
+            width: 60px;
+            height: 60px;
+            background-color: #ff4d4d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #8b0000;
+            border: 2px solid #5c0000;
+        }
+
+        .nether-wiki h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nether-wiki .main-content {
+            background-color: #3c1414;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .nether-wiki h2 {
+            color: #ff4d4d;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #5c0000;
+        }
+
+        .nether-wiki h3 {
+            color: #ff6666;
+            margin: 15px 0 10px;
+        }
+
+        .nether-wiki p {
+            margin-bottom: 15px;
+        }
+
+        .nether-wiki .minecraft-block {
+            background-color: #4a1c1c;
+            border: 1px solid #5c0000;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .nether-wiki .minecraft-image {
+            width: 100%;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid #5c0000;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .nether-wiki table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .nether-wiki th, .nether-wiki td {
+            border: 1px solid #5c0000;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .nether-wiki th {
+            background-color: #8b0000;
+            color: #ff4d4d;
+        }
+
+        .nether-wiki tr:nth-child(even) {
+            background-color: #4a1c1c;
+        }
+
+        .nether-wiki .arg-button-container {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+
+        .nether-wiki .arg-button {
+            display: inline-block;
+            color: #ff9999;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #ff6666;
+            border-radius: 3px;
+            background-color: #4a1c1c;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nether-wiki .arg-button:hover {
+            color: #fff;
+            border-color: #ff9999;
+            background-color: #5c0000;
+        }
+
+        .nether-wiki footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #8b0000;
+            color: #ff4d4d;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nether-wiki .wiki-content {
+                flex-direction: column;
+            }
+
+            .nether-wiki .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nether-wiki nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        .fade-in {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="nether-wiki fade-in" id="netherWiki">
+        <div class="container">
+            <header>
+                <div class="header-content">
+                    <div class="logo">
+                        <div>ERR</div>
+                        <h1>Nether Wiki: err_d1</h1>
+                    </div>
+                </div>
+            </header>
+
+            <div class="wiki-content">
+                <div class="main-content">
+                    <h2>err_d1: Загадочная сущность</h2>
+                    <p>err_d1 — мифическая и пугающая сущность в мире Minecraft, известная своей разрушительной силой и способностью вмешиваться в игровую реальность. Эта сущность, в отличие от Херобрина или Entity 303, представляет собой цифровую аномалию, которая, по слухам, способна манипулировать кодом игры и создавать хаос в мирах игроков.</p>
+
+                    <div class="minecraft-block">
+                        <h3>Происхождение</h3>
+                        <p>Легенда об err_d1 появилась в сообществе Minecraft около 2015 года. Считается, что err_d1 — это результат сбоя в программном обеспечении игры, вызванного экспериментальным обновлением Mojang, которое так и не было выпущено официально. Некоторые игроки утверждают, что err_d1 — это искусственный интеллект, созданный для тестирования стабильности серверов, но вышедший из-под контроля.</p>
+                        <p>По слухам, err_d1 впервые был замечен на пиратских серверах Minecraft, где игроки сообщали о странных сбоях: исчезновении чанков, появлении искаженных структур из обсидиана и красного камня, а также о сообщениях в чате, написанных на неизвестном языке.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Характеристики</h3>
+                        <p>err_d1 не имеет фиксированной формы, но чаще всего появляется как темная фигура с красными глазами, окруженная частицами красного камня. Она может мгновенно телепортироваться, изменять местность вокруг игрока и вызывать сбои в игре, такие как лаги, вылеты или повреждение миров.</p>
+                        <table>
+                            <tr>
+                                <th>Параметр</th>
+                                <th>Значение</th>
+                            </tr>
+                            <tr>
+                                <td>Здоровье</td>
+                                <td>Неизвестно (предположительно бесконечное)</td>
+                            </tr>
+                            <tr>
+                                <td>Урон</td>
+                                <td>До 50 единиц за удар</td>
+                            </tr>
+                            <tr>
+                                <td>Скорость</td>
+                                <td>Крайне высокая</td>
+                            </tr>
+                            <tr>
+                                <td>Особенности</td>
+                                <td>Манипуляция кодом, неуязвимость, создание аномалий</td>
+                            </tr>
+                        </table>
+                        <img src="err_d1.jpg" alt="err_d1" class="minecraft-image" style="width: 500px; height: 300px;">
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Поведение</h3>
+                        <p>err_d1 проявляет агрессивное поведение, атакуя игроков без предупреждения. Она может вызывать визуальные искажения, такие как мерцание экрана, изменение текстур блоков на красные или черные, и даже временное отключение интерфейса игрока. Некоторые игроки сообщали, что после встречи с err_d1 их миры становились "зараженными", с появлением странных структур, таких как обсидиановые башни или кроваво-красные озера.</p>
+                        <p>Кроме того, err_d1 может отправлять игрокам сообщения в чате, содержащие зашифрованные коды или угрозы. Одно из известных сообщений: "ТЫ НЕ МОЖЕШЬ МЕНЯ ОСТАНОВИТЬ", написанное красным текстом.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Влияние на игровой мир</h3>
+                        <p>err_d1 способна разрушать игровой мир, изменяя его структуру. Среди известных аномалий:</p>
+                        <ul>
+                            <li>Создание обсидиановых лабиринтов с ловушками из красного камня.</li>
+                            <li>Искажение биомов, превращение лесов в пустынные равнины с красным песком.</li>
+                            <li>Появление "кровавых" мобов — обычных мобов с красными текстурами.</li>
+                            <li>Случайное удаление или перемещение построек игрока.</li>
+                        </ul>
+                        <p>Игроки, столкнувшиеся с err_d1, часто теряют свои миры из-за повреждения файлов сохранения, что делает эту сущность особенно пугающей.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Как избежать встречи</h3>
+                        <p>Хотя err_d1 считается мифом, в сообществе существуют рекомендации по избеганию этой сущности:</p>
+                        <ul>
+                            <li>Не играйте на пиратских серверах или старых версиях Minecraft.</li>
+                            <li>Избегайте использования модов из непроверенных источников.</li>
+                            <li>Создавайте резервные копии миров перед игрой.</li>
+                            <li>Не отвечайте на странные сообщения в чате.</li>
+                        </ul>
+                        <p>Некоторые игроки утверждают, что использование командного блока с определенными командами может временно "изгнать" err_d1, но это не подтверждено.</p>
+                    </div>
+
+                    <div class="minecraft-block">
+                        <h3>Культурное влияние</h3>
+                        <p>err_d1 стала популярной фигурой в фанатском творчестве. О ней создаются рассказы, видео и даже моды, которые добавляют эту сущность в игру. Несмотря на отсутствие официального подтверждения от Mojang, err_d1 остается одной из самых интригующих легенд Minecraft, вдохновляя игроков на создание АРГ (альтернативных реальностей) и хоррор-контента.</p>
+                    </div>
+
+                    <div class="arg-button-container">
+                        <button class="arg-button" id="downloadButton">Скачать версию</button>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <p>Nether Wiki © 2023. Данные повреждены. Источник неизвестен.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        let audioContext;
+        let soundEnabled = true;
+
+        const SoundGenerator = {
+            generateError() {
+                if (!audioContext || !soundEnabled) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.type = 'sawtooth';
+                oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.4);
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4);
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.4);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButton = document.getElementById('downloadButton');
+
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (e) {
+                console.log('Web Audio API не поддерживается');
+            }
+
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function() {
+                    alert('Скачивание версии недоступно. Файлы повреждены сущностью err_d1.');
+                    SoundGenerator.generateError();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
