@@ -205,24 +205,24 @@
         }
 
         .wiki-page .arg-button {
-            display: block; /* Изменено с inline-block на block для растяжки */
-            width: 100%; /* Растягивает кнопку на всю ширину контейнера */
+            display: inline-block;
+            width: 100%;
             color: #ff0000;
             font-size: 14px;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 2px 5px;
             border: 1px solid #ddd;
             border-radius: 3px;
-            background-color: #d3d3d3; /* Светло-серый фон */
+            background-color: #f9f9f9;
             transition: all 0.3s ease;
             cursor: pointer;
-            text-align: center; /* Центрирование текста */
+            text-align: center;
         }
 
         .wiki-page .arg-button:hover {
             color: #cc0000;
             border-color: #999;
-            background-color: #c0c0c0; /* Чуть темнее светло-серый при наведении */
+            background-color: #eee;
         }
 
         .wiki-page footer {
@@ -1296,10 +1296,27 @@
 
             // Initialize Minecraft Wiki
             const argButton = document.getElementById('argButton');
+            const symbols = ['!', '"', '@', '*', 'd', '^', '%', ';', '$', '#'];
+            let symbolIndex = 0;
+
+            function updateButtonSymbols() {
+                if (currentPage === 'wiki') {
+                    let randomSymbols = '';
+                    for (let i = 0; i < 20; i++) {
+                        randomSymbols += symbols[Math.floor(Math.random() * symbols.length)];
+                    }
+                    argButton.textContent = randomSymbols;
+                    setTimeout(updateButtonSymbols, 100); // Update every 100ms
+                }
+            }
+
             argButton.addEventListener('click', function() {
                 SoundGenerator.generateError();
                 switchPage('system');
             });
+
+            // Start symbol animation when page loads
+            updateButtonSymbols();
 
             // Initialize System Monitor
             function initializeSystemMonitor() {
